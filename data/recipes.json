@@ -1,136 +1,103 @@
 [
   {
     "id": "rec001",
-    "name": "Panqueca de Banana e Aveia",
+    "name": "Panqueca de Banana",
     "mealPeriod": "breakfast",
     "ingredients": [
       {"quantity": "1", "unit": "unidade", "name": "banana madura", "category": "hortifruti"},
-      {"quantity": "2", "unit": "colheres", "name": "aveia em flocos", "category": "graos"},
-      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"},
-      {"quantity": "1", "unit": "pitada", "name": "canela", "category": "temperos"}
+      {"quantity": "2", "unit": "colheres", "name": "aveia", "category": "graos"},
+      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"}
     ],
-    "steps": [
-      "Amasse a banana em um bowl",
-      "Adicione o ovo e misture bem",
-      "Acrescente a aveia e canela",
-      "Aqueça frigideira antiaderente",
-      "Cozinhe 2-3 min cada lado"
-    ],
+    "steps": ["Amasse a banana", "Adicione ovo e aveia", "Cozinhe em frigideira"],
     "prepTimeMinutes": 10,
     "costLevel": "low",
-    "tags": ["quick", "high_fiber", "kid_friendly"],
+    "tags": ["quick", "kid_friendly"],
     "allergens": ["egg"],
     "portability": [],
-    "nutritionNotes": "Rica em fibras e potássio, ótima para energia."
+    "nutritionNotes": "Rica em fibras e potássio."
   },
   {
     "id": "rec002",
-    "name": "Mingau de Aveia com Frutas",
+    "name": "Mingau de Aveia",
     "mealPeriod": "breakfast",
     "ingredients": [
       {"quantity": "3", "unit": "colheres", "name": "aveia", "category": "graos"},
       {"quantity": "200", "unit": "ml", "name": "leite", "category": "laticinios"},
-      {"quantity": "1/2", "unit": "unidade", "name": "maçã picada", "category": "hortifruti"},
       {"quantity": "1", "unit": "colher", "name": "mel", "category": "temperos"}
     ],
-    "steps": [
-      "Aqueça o leite",
-      "Adicione aveia mexendo",
-      "Cozinhe 5 min",
-      "Sirva com maçã e mel"
-    ],
+    "steps": ["Aqueça o leite", "Adicione aveia", "Cozinhe mexendo", "Adoce com mel"],
     "prepTimeMinutes": 8,
     "costLevel": "low",
-    "tags": ["quick", "high_fiber"],
+    "tags": ["quick"],
     "allergens": ["milk"],
     "portability": [],
-    "nutritionNotes": "Fibras solúveis ajudam na digestão."
+    "nutritionNotes": "Fibras para saciedade."
   },
   {
     "id": "rec003",
     "name": "Tapioca com Queijo",
     "mealPeriod": "breakfast",
     "ingredients": [
-      {"quantity": "3", "unit": "colheres", "name": "goma de tapioca", "category": "graos"},
+      {"quantity": "3", "unit": "colheres", "name": "tapioca", "category": "graos"},
       {"quantity": "30", "unit": "g", "name": "queijo minas", "category": "laticinios"}
     ],
-    "steps": [
-      "Aqueça frigideira",
-      "Espalhe a tapioca",
-      "Aguarde hidratar",
-      "Adicione queijo",
-      "Dobre ao meio"
-    ],
+    "steps": ["Espalhe tapioca na frigideira", "Adicione queijo", "Dobre ao meio"],
     "prepTimeMinutes": 5,
     "costLevel": "low",
     "tags": ["quick", "kid_friendly"],
     "allergens": ["milk"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Sem glúten, leve e nutritiva."
+    "nutritionNotes": "Sem glúten e nutritiva."
   },
   {
     "id": "rec004",
-    "name": "Pão Integral com Pasta de Amendoim",
+    "name": "Pão com Pasta de Amendoim",
     "mealPeriod": "breakfast",
     "ingredients": [
       {"quantity": "2", "unit": "fatias", "name": "pão integral", "category": "graos"},
       {"quantity": "2", "unit": "colheres", "name": "pasta de amendoim", "category": "proteinas"},
       {"quantity": "1/2", "unit": "unidade", "name": "banana", "category": "hortifruti"}
     ],
-    "steps": [
-      "Torre o pão levemente",
-      "Espalhe pasta de amendoim",
-      "Coloque banana fatiada"
-    ],
+    "steps": ["Torre o pão", "Espalhe pasta", "Adicione banana fatiada"],
     "prepTimeMinutes": 5,
     "costLevel": "low",
-    "tags": ["quick", "high_protein"],
+    "tags": ["quick"],
     "allergens": ["peanut", "gluten"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Proteína vegetal e energia rápida."
+    "nutritionNotes": "Proteína vegetal e energia."
   },
   {
     "id": "rec005",
-    "name": "Omelete com Vegetais",
+    "name": "Omelete Simples",
     "mealPeriod": "breakfast",
     "ingredients": [
       {"quantity": "2", "unit": "unidades", "name": "ovos", "category": "proteinas"},
-      {"quantity": "1/4", "unit": "unidade", "name": "tomate", "category": "hortifruti"},
-      {"quantity": "2", "unit": "colheres", "name": "espinafre", "category": "hortifruti"}
+      {"quantity": "1", "unit": "colher", "name": "queijo ralado", "category": "laticinios"}
     ],
-    "steps": [
-      "Bata os ovos",
-      "Adicione vegetais picados",
-      "Cozinhe em frigideira"
-    ],
-    "prepTimeMinutes": 10,
+    "steps": ["Bata os ovos", "Cozinhe em frigideira", "Adicione queijo"],
+    "prepTimeMinutes": 7,
     "costLevel": "low",
-    "tags": ["high_protein", "kid_friendly"],
-    "allergens": ["egg"],
+    "tags": ["quick", "high_protein"],
+    "allergens": ["egg", "milk"],
     "portability": [],
-    "nutritionNotes": "Proteína completa e vitaminas."
+    "nutritionNotes": "Proteína completa."
   },
   {
     "id": "rec006",
-    "name": "Crepioca Simples",
+    "name": "Iogurte com Granola",
     "mealPeriod": "breakfast",
     "ingredients": [
-      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"},
-      {"quantity": "2", "unit": "colheres", "name": "tapioca", "category": "graos"},
-      {"quantity": "20", "unit": "g", "name": "queijo ralado", "category": "laticinios"}
+      {"quantity": "150", "unit": "g", "name": "iogurte", "category": "laticinios"},
+      {"quantity": "3", "unit": "colheres", "name": "granola", "category": "graos"},
+      {"quantity": "5", "unit": "unidades", "name": "morangos", "category": "hortifruti"}
     ],
-    "steps": [
-      "Misture ovo e tapioca",
-      "Despeje na frigideira",
-      "Adicione queijo",
-      "Dobre e sirva"
-    ],
-    "prepTimeMinutes": 7,
-    "costLevel": "low",
+    "steps": ["Coloque iogurte no pote", "Adicione granola", "Decore com morangos"],
+    "prepTimeMinutes": 3,
+    "costLevel": "medium",
     "tags": ["quick", "kid_friendly"],
-    "allergens": ["egg", "milk"],
-    "portability": [],
-    "nutritionNotes": "Sem glúten e proteína de qualidade."
+    "allergens": ["milk"],
+    "portability": ["lunchbox_ok"],
+    "nutritionNotes": "Probióticos e fibras."
   },
   {
     "id": "rec007",
@@ -138,144 +105,112 @@
     "mealPeriod": "breakfast",
     "ingredients": [
       {"quantity": "1", "unit": "unidade", "name": "banana", "category": "hortifruti"},
-      {"quantity": "200", "unit": "ml", "name": "leite", "category": "laticinios"},
-      {"quantity": "1", "unit": "colher", "name": "aveia", "category": "graos"}
+      {"quantity": "200", "unit": "ml", "name": "leite", "category": "laticinios"}
     ],
-    "steps": [
-      "Bata tudo no liquidificador",
-      "Sirva gelado"
-    ],
+    "steps": ["Bata tudo no liquidificador", "Sirva gelado"],
     "prepTimeMinutes": 3,
     "costLevel": "low",
-    "tags": ["quick", "high_fiber"],
+    "tags": ["quick"],
     "allergens": ["milk"],
     "portability": [],
-    "nutritionNotes": "Rápido, nutritivo e refrescante."
+    "nutritionNotes": "Rápido e nutritivo."
   },
   {
     "id": "rec008",
-    "name": "Iogurte com Granola",
+    "name": "Crepioca",
     "mealPeriod": "breakfast",
     "ingredients": [
-      {"quantity": "150", "unit": "g", "name": "iogurte natural", "category": "laticinios"},
-      {"quantity": "3", "unit": "colheres", "name": "granola", "category": "graos"},
-      {"quantity": "5", "unit": "unidades", "name": "morangos", "category": "hortifruti"}
+      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"},
+      {"quantity": "2", "unit": "colheres", "name": "tapioca", "category": "graos"}
     ],
-    "steps": [
-      "Coloque iogurte no pote",
-      "Adicione granola",
-      "Decore com morangos"
-    ],
-    "prepTimeMinutes": 3,
-    "costLevel": "medium",
-    "tags": ["quick", "kid_friendly"],
-    "allergens": ["milk"],
-    "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Probióticos e fibras para saúde intestinal."
+    "steps": ["Misture ovo e tapioca", "Despeje na frigideira", "Recheie a gosto"],
+    "prepTimeMinutes": 7,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": ["egg"],
+    "portability": [],
+    "nutritionNotes": "Sem glúten."
   },
   {
     "id": "rec009",
-    "name": "Pão de Queijo Caseiro",
+    "name": "Pão de Queijo",
     "mealPeriod": "breakfast",
     "ingredients": [
-      {"quantity": "1", "unit": "xícara", "name": "polvilho azedo", "category": "graos"},
+      {"quantity": "1", "unit": "xícara", "name": "polvilho", "category": "graos"},
       {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"},
-      {"quantity": "50", "unit": "g", "name": "queijo ralado", "category": "laticinios"},
-      {"quantity": "50", "unit": "ml", "name": "leite", "category": "laticinios"}
+      {"quantity": "50", "unit": "g", "name": "queijo", "category": "laticinios"}
     ],
-    "steps": [
-      "Misture todos ingredientes",
-      "Faça bolinhas",
-      "Asse 20 min a 180°C"
-    ],
+    "steps": ["Misture tudo", "Faça bolinhas", "Asse 20 min"],
     "prepTimeMinutes": 25,
     "costLevel": "low",
     "tags": ["kid_friendly"],
     "allergens": ["egg", "milk"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Sem glúten, tradicional brasileiro."
+    "nutritionNotes": "Tradicional brasileiro."
   },
   {
     "id": "rec010",
     "name": "Batata Doce com Ovo",
     "mealPeriod": "breakfast",
     "ingredients": [
-      {"quantity": "1", "unit": "unidade", "name": "batata doce média", "category": "graos"},
+      {"quantity": "1", "unit": "unidade", "name": "batata doce", "category": "graos"},
       {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"}
     ],
-    "steps": [
-      "Cozinhe batata doce",
-      "Frite ovo",
-      "Sirva junto"
-    ],
+    "steps": ["Cozinhe batata", "Frite ovo", "Sirva junto"],
     "prepTimeMinutes": 15,
     "costLevel": "low",
-    "tags": ["high_fiber", "high_protein"],
+    "tags": ["high_protein"],
     "allergens": ["egg"],
     "portability": [],
-    "nutritionNotes": "Carboidrato de baixo índice glicêmico."
+    "nutritionNotes": "Carboidrato de qualidade."
   },
   {
     "id": "rec011",
-    "name": "Sanduíche Natural de Frango",
+    "name": "Sanduíche de Frango",
     "mealPeriod": "schoolSnack",
     "ingredients": [
       {"quantity": "2", "unit": "fatias", "name": "pão integral", "category": "graos"},
       {"quantity": "50", "unit": "g", "name": "frango desfiado", "category": "proteinas"},
-      {"quantity": "1", "unit": "folha", "name": "alface", "category": "hortifruti"},
-      {"quantity": "2", "unit": "rodelas", "name": "tomate", "category": "hortifruti"}
+      {"quantity": "1", "unit": "folha", "name": "alface", "category": "hortifruti"}
     ],
-    "steps": [
-      "Monte o sanduíche",
-      "Embrulhe em papel alumínio"
-    ],
+    "steps": ["Monte o sanduíche", "Embrulhe"],
     "prepTimeMinutes": 5,
     "costLevel": "low",
-    "tags": ["quick", "high_protein", "kid_friendly"],
+    "tags": ["quick", "kid_friendly"],
     "allergens": ["gluten"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Proteína magra e vegetais frescos."
+    "nutritionNotes": "Proteína magra."
   },
   {
     "id": "rec012",
     "name": "Wrap de Atum",
     "mealPeriod": "schoolSnack",
     "ingredients": [
-      {"quantity": "1", "unit": "unidade", "name": "tortilha integral", "category": "graos"},
-      {"quantity": "1", "unit": "lata", "name": "atum em água", "category": "proteinas"},
-      {"quantity": "1", "unit": "colher", "name": "milho", "category": "graos"},
+      {"quantity": "1", "unit": "unidade", "name": "tortilha", "category": "graos"},
+      {"quantity": "1", "unit": "lata", "name": "atum", "category": "proteinas"},
       {"quantity": "1", "unit": "folha", "name": "alface", "category": "hortifruti"}
     ],
-    "steps": [
-      "Misture atum e milho",
-      "Espalhe na tortilha",
-      "Adicione alface e enrole"
-    ],
+    "steps": ["Espalhe atum na tortilha", "Adicione alface", "Enrole"],
     "prepTimeMinutes": 7,
     "costLevel": "medium",
-    "tags": ["quick", "high_protein"],
+    "tags": ["quick"],
     "allergens": ["fish", "gluten"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Ômega-3 para desenvolvimento cerebral."
+    "nutritionNotes": "Ômega-3."
   },
   {
     "id": "rec013",
-    "name": "Bolinho de Cenoura com Aveia",
+    "name": "Bolinho de Cenoura",
     "mealPeriod": "schoolSnack",
     "ingredients": [
       {"quantity": "1", "unit": "unidade", "name": "cenoura ralada", "category": "hortifruti"},
       {"quantity": "1", "unit": "xícara", "name": "aveia", "category": "graos"},
-      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"},
-      {"quantity": "1", "unit": "colher", "name": "mel", "category": "temperos"}
+      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"}
     ],
-    "steps": [
-      "Misture tudo",
-      "Faça bolinhos",
-      "Asse 20 min"
-    ],
+    "steps": ["Misture tudo", "Faça bolinhos", "Asse 20 min"],
     "prepTimeMinutes": 25,
     "costLevel": "low",
-    "tags": ["kid_friendly", "high_fiber"],
+    "tags": ["kid_friendly"],
     "allergens": ["egg"],
     "portability": ["lunchbox_ok"],
     "nutritionNotes": "Vitamina A e fibras."
@@ -287,102 +222,80 @@
     "ingredients": [
       {"quantity": "5", "unit": "unidades", "name": "morangos", "category": "hortifruti"},
       {"quantity": "1/2", "unit": "unidade", "name": "banana", "category": "hortifruti"},
-      {"quantity": "5", "unit": "unidades", "name": "uvas", "category": "hortifruti"},
-      {"quantity": "3", "unit": "cubos", "name": "queijo branco", "category": "laticinios"}
+      {"quantity": "5", "unit": "unidades", "name": "uvas", "category": "hortifruti"}
     ],
-    "steps": [
-      "Corte as frutas",
-      "Monte nos palitos intercalando com queijo"
-    ],
+    "steps": ["Corte frutas", "Monte nos palitos"],
     "prepTimeMinutes": 10,
     "costLevel": "medium",
     "tags": ["quick", "kid_friendly"],
-    "allergens": ["milk"],
-    "portability": ["lunchbox_ok", "needs_fridge"],
-    "nutritionNotes": "Vitaminas e proteína juntas."
+    "allergens": [],
+    "portability": ["lunchbox_ok"],
+    "nutritionNotes": "Vitaminas naturais."
   },
   {
     "id": "rec015",
-    "name": "Biscoitos de Banana e Aveia",
+    "name": "Biscoitos de Aveia",
     "mealPeriod": "schoolSnack",
     "ingredients": [
-      {"quantity": "2", "unit": "unidades", "name": "bananas maduras", "category": "hortifruti"},
+      {"quantity": "2", "unit": "unidades", "name": "bananas", "category": "hortifruti"},
       {"quantity": "1", "unit": "xícara", "name": "aveia", "category": "graos"}
     ],
-    "steps": [
-      "Amasse as bananas",
-      "Misture com aveia",
-      "Faça discos e asse 15 min"
-    ],
+    "steps": ["Amasse bananas", "Misture aveia", "Asse 15 min"],
     "prepTimeMinutes": 20,
     "costLevel": "low",
-    "tags": ["kid_friendly", "high_fiber"],
+    "tags": ["kid_friendly"],
     "allergens": [],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Apenas 2 ingredientes, sem açúcar adicionado."
+    "nutritionNotes": "Sem açúcar adicionado."
   },
   {
     "id": "rec016",
-    "name": "Mini Pizza Integral",
+    "name": "Mini Pizza",
     "mealPeriod": "schoolSnack",
     "ingredients": [
-      {"quantity": "1", "unit": "unidade", "name": "pão sírio integral", "category": "graos"},
+      {"quantity": "1", "unit": "unidade", "name": "pão sírio", "category": "graos"},
       {"quantity": "2", "unit": "colheres", "name": "molho de tomate", "category": "temperos"},
-      {"quantity": "30", "unit": "g", "name": "queijo mussarela", "category": "laticinios"},
-      {"quantity": "3", "unit": "rodelas", "name": "tomate", "category": "hortifruti"}
+      {"quantity": "30", "unit": "g", "name": "queijo", "category": "laticinios"}
     ],
-    "steps": [
-      "Espalhe molho no pão",
-      "Adicione queijo e tomate",
-      "Leve ao forno 10 min"
-    ],
+    "steps": ["Espalhe molho", "Adicione queijo", "Asse 10 min"],
     "prepTimeMinutes": 15,
     "costLevel": "low",
     "tags": ["kid_friendly"],
     "allergens": ["milk", "gluten"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Versão saudável do favorito das crianças."
+    "nutritionNotes": "Versão saudável."
   },
   {
     "id": "rec017",
     "name": "Pasta de Grão de Bico",
     "mealPeriod": "schoolSnack",
     "ingredients": [
-      {"quantity": "1", "unit": "xícara", "name": "grão de bico cozido", "category": "graos"},
-      {"quantity": "1", "unit": "colher", "name": "tahine", "category": "temperos"},
+      {"quantity": "1", "unit": "xícara", "name": "grão de bico", "category": "graos"},
       {"quantity": "1", "unit": "dente", "name": "alho", "category": "temperos"},
-      {"quantity": "4", "unit": "unidades", "name": "torradinhas integrais", "category": "graos"}
+      {"quantity": "4", "unit": "unidades", "name": "torradas", "category": "graos"}
     ],
-    "steps": [
-      "Bata grão de bico com tahine e alho",
-      "Sirva com torradinhas"
-    ],
+    "steps": ["Bata grão de bico com alho", "Sirva com torradas"],
     "prepTimeMinutes": 10,
     "costLevel": "medium",
-    "tags": ["high_protein", "high_fiber"],
+    "tags": ["high_protein"],
     "allergens": ["gluten"],
-    "portability": ["lunchbox_ok", "needs_fridge"],
-    "nutritionNotes": "Proteína vegetal completa."
+    "portability": ["lunchbox_ok"],
+    "nutritionNotes": "Proteína vegetal."
   },
   {
     "id": "rec018",
     "name": "Bolo de Banana no Pote",
     "mealPeriod": "schoolSnack",
     "ingredients": [
-      {"quantity": "1", "unit": "fatia", "name": "bolo de banana caseiro", "category": "graos"},
-      {"quantity": "2", "unit": "colheres", "name": "iogurte", "category": "laticinios"},
-      {"quantity": "1", "unit": "colher", "name": "granola", "category": "graos"}
+      {"quantity": "1", "unit": "fatia", "name": "bolo de banana", "category": "graos"},
+      {"quantity": "2", "unit": "colheres", "name": "iogurte", "category": "laticinios"}
     ],
-    "steps": [
-      "Coloque bolo no pote",
-      "Adicione iogurte",
-      "Finalize com granola"
-    ],
+    "steps": ["Coloque bolo no pote", "Adicione iogurte"],
     "prepTimeMinutes": 5,
     "costLevel": "low",
     "tags": ["quick", "kid_friendly"],
     "allergens": ["milk", "egg", "gluten"],
-    "portability": ["lunchbox_ok", "needs_fridge"],
+    "portability": ["lunchbox_ok"],
     "nutritionNotes": "Energia e cálcio."
   },
   {
@@ -393,259 +306,191 @@
       {"quantity": "1", "unit": "unidade", "name": "batata doce", "category": "graos"},
       {"quantity": "1", "unit": "fio", "name": "azeite", "category": "temperos"}
     ],
-    "steps": [
-      "Corte batata em rodelas finas",
-      "Pincele com azeite",
-      "Asse até crocante"
-    ],
+    "steps": ["Corte fino", "Pincele azeite", "Asse até crocante"],
     "prepTimeMinutes": 25,
     "costLevel": "low",
     "tags": ["kid_friendly"],
     "allergens": [],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Alternativa saudável aos salgadinhos."
+    "nutritionNotes": "Alternativa saudável."
   },
   {
     "id": "rec020",
-    "name": "Rolinho de Presunto e Queijo",
+    "name": "Rolinho de Peru",
     "mealPeriod": "schoolSnack",
     "ingredients": [
       {"quantity": "2", "unit": "fatias", "name": "peito de peru", "category": "proteinas"},
-      {"quantity": "2", "unit": "fatias", "name": "queijo branco", "category": "laticinios"},
-      {"quantity": "2", "unit": "folhas", "name": "alface", "category": "hortifruti"}
+      {"quantity": "2", "unit": "fatias", "name": "queijo branco", "category": "laticinios"}
     ],
-    "steps": [
-      "Coloque queijo sobre o peru",
-      "Adicione alface",
-      "Enrole e prenda com palito"
-    ],
+    "steps": ["Coloque queijo sobre peru", "Enrole"],
     "prepTimeMinutes": 3,
     "costLevel": "medium",
-    "tags": ["quick", "high_protein"],
+    "tags": ["quick"],
     "allergens": ["milk"],
-    "portability": ["lunchbox_ok", "needs_fridge"],
-    "nutritionNotes": "Proteína magra prática."
+    "portability": ["lunchbox_ok"],
+    "nutritionNotes": "Proteína prática."
   },
   {
     "id": "rec021",
-    "name": "Arroz Integral com Feijão",
+    "name": "Arroz com Feijão",
     "mealPeriod": "lunch",
     "ingredients": [
-      {"quantity": "1", "unit": "xícara", "name": "arroz integral", "category": "graos"},
-      {"quantity": "1/2", "unit": "xícara", "name": "feijão cozido", "category": "graos"},
-      {"quantity": "1", "unit": "dente", "name": "alho", "category": "temperos"},
-      {"quantity": "1", "unit": "fio", "name": "azeite", "category": "temperos"}
+      {"quantity": "1", "unit": "xícara", "name": "arroz", "category": "graos"},
+      {"quantity": "1/2", "unit": "xícara", "name": "feijão", "category": "graos"}
     ],
-    "steps": [
-      "Cozinhe o arroz integral",
-      "Refogue alho no azeite",
-      "Adicione feijão",
-      "Sirva junto com arroz"
-    ],
+    "steps": ["Cozinhe arroz", "Refogue feijão", "Sirva junto"],
     "prepTimeMinutes": 30,
     "costLevel": "low",
-    "tags": ["high_fiber", "high_protein"],
+    "tags": ["high_protein"],
     "allergens": [],
     "portability": [],
-    "nutritionNotes": "Combinação completa de proteínas vegetais."
+    "nutritionNotes": "Dupla clássica brasileira."
   },
   {
     "id": "rec022",
-    "name": "Frango Grelhado com Legumes",
+    "name": "Frango Grelhado",
     "mealPeriod": "lunch",
     "ingredients": [
       {"quantity": "100", "unit": "g", "name": "peito de frango", "category": "proteinas"},
-      {"quantity": "1/2", "unit": "unidade", "name": "cenoura", "category": "hortifruti"},
-      {"quantity": "1/2", "unit": "unidade", "name": "abobrinha", "category": "hortifruti"},
-      {"quantity": "3", "unit": "unidades", "name": "brócolis", "category": "hortifruti"}
+      {"quantity": "1", "unit": "unidade", "name": "brócolis", "category": "hortifruti"}
     ],
-    "steps": [
-      "Tempere e grelhe o frango",
-      "Cozinhe legumes no vapor",
-      "Sirva junto"
-    ],
+    "steps": ["Grelhe frango", "Cozinhe brócolis no vapor"],
     "prepTimeMinutes": 20,
     "costLevel": "medium",
-    "tags": ["high_protein", "kid_friendly"],
+    "tags": ["high_protein"],
     "allergens": [],
     "portability": [],
-    "nutritionNotes": "Proteína magra e vitaminas."
+    "nutritionNotes": "Proteína magra."
   },
   {
     "id": "rec023",
-    "name": "Macarrão Integral ao Molho de Tomate",
+    "name": "Macarrão ao Molho",
     "mealPeriod": "lunch",
     "ingredients": [
-      {"quantity": "100", "unit": "g", "name": "macarrão integral", "category": "graos"},
-      {"quantity": "1", "unit": "xícara", "name": "molho de tomate caseiro", "category": "temperos"},
-      {"quantity": "2", "unit": "colheres", "name": "queijo ralado", "category": "laticinios"}
+      {"quantity": "100", "unit": "g", "name": "macarrão", "category": "graos"},
+      {"quantity": "1", "unit": "xícara", "name": "molho de tomate", "category": "temperos"}
     ],
-    "steps": [
-      "Cozinhe o macarrão",
-      "Aqueça o molho",
-      "Misture e finalize com queijo"
-    ],
+    "steps": ["Cozinhe macarrão", "Aqueça molho", "Misture"],
     "prepTimeMinutes": 15,
     "costLevel": "low",
     "tags": ["quick", "kid_friendly"],
-    "allergens": ["gluten", "milk"],
+    "allergens": ["gluten"],
     "portability": [],
-    "nutritionNotes": "Carboidrato integral com fibras."
+    "nutritionNotes": "Energia para brincar."
   },
   {
     "id": "rec024",
     "name": "Carne Moída com Batata",
     "mealPeriod": "lunch",
     "ingredients": [
-      {"quantity": "100", "unit": "g", "name": "carne moída magra", "category": "proteinas"},
-      {"quantity": "1", "unit": "unidade", "name": "batata", "category": "graos"},
-      {"quantity": "1/2", "unit": "unidade", "name": "cebola", "category": "hortifruti"},
-      {"quantity": "1", "unit": "unidade", "name": "tomate", "category": "hortifruti"}
+      {"quantity": "100", "unit": "g", "name": "carne moída", "category": "proteinas"},
+      {"quantity": "1", "unit": "unidade", "name": "batata", "category": "graos"}
     ],
-    "steps": [
-      "Refogue cebola e tomate",
-      "Adicione carne moída",
-      "Cozinhe batata em cubos",
-      "Misture tudo"
-    ],
+    "steps": ["Refogue carne", "Adicione batata cozida"],
     "prepTimeMinutes": 25,
     "costLevel": "medium",
-    "tags": ["high_protein", "kid_friendly"],
+    "tags": ["kid_friendly"],
     "allergens": [],
     "portability": [],
-    "nutritionNotes": "Ferro e proteína para crescimento."
+    "nutritionNotes": "Ferro e energia."
   },
   {
     "id": "rec025",
-    "name": "Omelete de Forno com Legumes",
+    "name": "Omelete de Forno",
     "mealPeriod": "lunch",
     "ingredients": [
       {"quantity": "3", "unit": "unidades", "name": "ovos", "category": "proteinas"},
-      {"quantity": "1/4", "unit": "unidade", "name": "pimentão", "category": "hortifruti"},
-      {"quantity": "1/4", "unit": "unidade", "name": "cebola", "category": "hortifruti"},
-      {"quantity": "2", "unit": "colheres", "name": "queijo ralado", "category": "laticinios"}
+      {"quantity": "1/4", "unit": "unidade", "name": "pimentão", "category": "hortifruti"}
     ],
-    "steps": [
-      "Bata ovos com legumes picados",
-      "Adicione queijo",
-      "Asse em forma por 20 min"
-    ],
+    "steps": ["Bata ovos com pimentão", "Asse 20 min"],
     "prepTimeMinutes": 25,
     "costLevel": "low",
     "tags": ["high_protein"],
-    "allergens": ["egg", "milk"],
+    "allergens": ["egg"],
     "portability": [],
-    "nutritionNotes": "Proteína completa e vegetais."
+    "nutritionNotes": "Proteína completa."
   },
   {
     "id": "rec026",
-    "name": "Peixe Assado com Purê",
+    "name": "Peixe Assado",
     "mealPeriod": "lunch",
     "ingredients": [
       {"quantity": "100", "unit": "g", "name": "filé de peixe", "category": "proteinas"},
-      {"quantity": "2", "unit": "unidades", "name": "batatas", "category": "graos"},
-      {"quantity": "2", "unit": "colheres", "name": "leite", "category": "laticinios"}
+      {"quantity": "1", "unit": "unidade", "name": "limão", "category": "temperos"}
     ],
-    "steps": [
-      "Tempere e asse o peixe",
-      "Cozinhe batatas",
-      "Amasse com leite fazendo purê"
-    ],
-    "prepTimeMinutes": 30,
+    "steps": ["Tempere com limão", "Asse 20 min"],
+    "prepTimeMinutes": 25,
     "costLevel": "medium",
     "tags": ["high_protein"],
-    "allergens": ["fish", "milk"],
+    "allergens": ["fish"],
     "portability": [],
-    "nutritionNotes": "Ômega-3 para cérebro."
+    "nutritionNotes": "Ômega-3 para o cérebro."
   },
   {
     "id": "rec027",
     "name": "Risoto de Frango",
     "mealPeriod": "lunch",
     "ingredients": [
-      {"quantity": "1", "unit": "xícara", "name": "arroz arbóreo", "category": "graos"},
-      {"quantity": "80", "unit": "g", "name": "frango desfiado", "category": "proteinas"},
-      {"quantity": "2", "unit": "xícaras", "name": "caldo de legumes", "category": "temperos"},
-      {"quantity": "2", "unit": "colheres", "name": "queijo ralado", "category": "laticinios"}
+      {"quantity": "1", "unit": "xícara", "name": "arroz", "category": "graos"},
+      {"quantity": "80", "unit": "g", "name": "frango", "category": "proteinas"}
     ],
-    "steps": [
-      "Refogue arroz",
-      "Adicione caldo aos poucos",
-      "Misture frango",
-      "Finalize com queijo"
-    ],
+    "steps": ["Refogue arroz", "Adicione caldo aos poucos", "Misture frango"],
     "prepTimeMinutes": 35,
     "costLevel": "medium",
     "tags": ["kid_friendly"],
-    "allergens": ["milk"],
+    "allergens": [],
     "portability": [],
     "nutritionNotes": "Cremoso e nutritivo."
   },
   {
     "id": "rec028",
-    "name": "Hambúrguer Caseiro com Salada",
+    "name": "Hambúrguer Caseiro",
     "mealPeriod": "lunch",
     "ingredients": [
       {"quantity": "100", "unit": "g", "name": "carne moída", "category": "proteinas"},
-      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"},
-      {"quantity": "2", "unit": "folhas", "name": "alface", "category": "hortifruti"},
-      {"quantity": "2", "unit": "rodelas", "name": "tomate", "category": "hortifruti"}
+      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"}
     ],
-    "steps": [
-      "Misture carne com ovo",
-      "Faça hambúrguer e grelhe",
-      "Sirva com salada"
-    ],
+    "steps": ["Misture carne e ovo", "Faça hambúrguer", "Grelhe"],
     "prepTimeMinutes": 20,
     "costLevel": "medium",
     "tags": ["high_protein", "kid_friendly"],
     "allergens": ["egg"],
     "portability": [],
-    "nutritionNotes": "Versão saudável do fast food."
+    "nutritionNotes": "Versão saudável."
   },
   {
     "id": "rec029",
-    "name": "Sopa de Legumes com Frango",
+    "name": "Sopa de Legumes",
     "mealPeriod": "lunch",
     "ingredients": [
-      {"quantity": "80", "unit": "g", "name": "frango em cubos", "category": "proteinas"},
-      {"quantity": "1/2", "unit": "unidade", "name": "cenoura", "category": "hortifruti"},
-      {"quantity": "1/2", "unit": "unidade", "name": "batata", "category": "graos"},
-      {"quantity": "2", "unit": "xícaras", "name": "água", "category": "temperos"}
+      {"quantity": "1", "unit": "unidade", "name": "cenoura", "category": "hortifruti"},
+      {"quantity": "1", "unit": "unidade", "name": "batata", "category": "graos"},
+      {"quantity": "80", "unit": "g", "name": "frango", "category": "proteinas"}
     ],
-    "steps": [
-      "Cozinhe frango",
-      "Adicione legumes picados",
-      "Cozinhe até amolecer"
-    ],
+    "steps": ["Cozinhe tudo junto", "Tempere a gosto"],
     "prepTimeMinutes": 30,
     "costLevel": "low",
     "tags": ["kid_friendly"],
     "allergens": [],
     "portability": [],
-    "nutritionNotes": "Hidratante e reconfortante."
+    "nutritionNotes": "Reconfortante."
   },
   {
     "id": "rec030",
-    "name": "Escondidinho de Carne",
+    "name": "Escondidinho",
     "mealPeriod": "lunch",
     "ingredients": [
       {"quantity": "100", "unit": "g", "name": "carne moída", "category": "proteinas"},
       {"quantity": "2", "unit": "unidades", "name": "batatas", "category": "graos"},
-      {"quantity": "50", "unit": "g", "name": "queijo ralado", "category": "laticinios"}
+      {"quantity": "50", "unit": "g", "name": "queijo", "category": "laticinios"}
     ],
-    "steps": [
-      "Refogue a carne",
-      "Faça purê de batata",
-      "Monte em camadas",
-      "Cubra com queijo e gratine"
-    ],
+    "steps": ["Refogue carne", "Faça purê", "Monte camadas", "Gratine"],
     "prepTimeMinutes": 40,
     "costLevel": "medium",
     "tags": ["kid_friendly"],
     "allergens": ["milk"],
     "portability": [],
-    "nutritionNotes": "Prato completo que as crianças adoram."
+    "nutritionNotes": "Favorito das crianças."
   },
   {
     "id": "rec031",
@@ -656,36 +501,28 @@
       {"quantity": "1", "unit": "unidade", "name": "banana", "category": "hortifruti"},
       {"quantity": "200", "unit": "ml", "name": "leite", "category": "laticinios"}
     ],
-    "steps": [
-      "Bata tudo no liquidificador",
-      "Sirva gelado"
-    ],
+    "steps": ["Bata tudo", "Sirva gelado"],
     "prepTimeMinutes": 5,
     "costLevel": "medium",
     "tags": ["quick", "kid_friendly"],
     "allergens": ["milk"],
     "portability": [],
-    "nutritionNotes": "Antioxidantes e vitamina C."
+    "nutritionNotes": "Antioxidantes."
   },
   {
     "id": "rec032",
     "name": "Pipoca Caseira",
     "mealPeriod": "afternoonSnack",
     "ingredients": [
-      {"quantity": "50", "unit": "g", "name": "milho de pipoca", "category": "graos"},
-      {"quantity": "1", "unit": "colher", "name": "óleo de coco", "category": "temperos"}
+      {"quantity": "50", "unit": "g", "name": "milho de pipoca", "category": "graos"}
     ],
-    "steps": [
-      "Aqueça óleo na panela",
-      "Adicione milho",
-      "Tampe e aguarde estourar"
-    ],
+    "steps": ["Estoure na panela"],
     "prepTimeMinutes": 5,
     "costLevel": "low",
-    "tags": ["quick", "kid_friendly", "high_fiber"],
+    "tags": ["quick", "kid_friendly"],
     "allergens": [],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Fibras e diversão saudável."
+    "nutritionNotes": "Fibras e diversão."
   },
   {
     "id": "rec033",
@@ -693,17 +530,12 @@
     "mealPeriod": "afternoonSnack",
     "ingredients": [
       {"quantity": "1", "unit": "xícara", "name": "aveia", "category": "graos"},
-      {"quantity": "1", "unit": "unidade", "name": "banana", "category": "hortifruti"},
-      {"quantity": "2", "unit": "colheres", "name": "chocolate 70%", "category": "temperos"}
+      {"quantity": "1", "unit": "unidade", "name": "banana", "category": "hortifruti"}
     ],
-    "steps": [
-      "Amasse banana",
-      "Misture aveia e chocolate",
-      "Faça discos e asse 15 min"
-    ],
+    "steps": ["Amasse banana", "Misture aveia", "Asse 15 min"],
     "prepTimeMinutes": 20,
     "costLevel": "low",
-    "tags": ["kid_friendly", "high_fiber"],
+    "tags": ["kid_friendly"],
     "allergens": [],
     "portability": ["lunchbox_ok"],
     "nutritionNotes": "Energia saudável."
@@ -714,40 +546,31 @@
     "mealPeriod": "afternoonSnack",
     "ingredients": [
       {"quantity": "30", "unit": "g", "name": "queijo minas", "category": "laticinios"},
-      {"quantity": "1", "unit": "colher", "name": "geleia de frutas", "category": "temperos"},
-      {"quantity": "4", "unit": "unidades", "name": "torradas", "category": "graos"}
+      {"quantity": "1", "unit": "colher", "name": "geleia", "category": "temperos"}
     ],
-    "steps": [
-      "Corte queijo",
-      "Sirva com geleia e torradas"
-    ],
+    "steps": ["Corte queijo", "Sirva com geleia"],
     "prepTimeMinutes": 3,
     "costLevel": "low",
     "tags": ["quick"],
-    "allergens": ["milk", "gluten"],
+    "allergens": ["milk"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Cálcio e energia."
+    "nutritionNotes": "Cálcio."
   },
   {
     "id": "rec035",
-    "name": "Iogurte com Mel e Nozes",
+    "name": "Iogurte com Mel",
     "mealPeriod": "afternoonSnack",
     "ingredients": [
-      {"quantity": "150", "unit": "g", "name": "iogurte natural", "category": "laticinios"},
-      {"quantity": "1", "unit": "colher", "name": "mel", "category": "temperos"},
-      {"quantity": "5", "unit": "unidades", "name": "nozes picadas", "category": "proteinas"}
+      {"quantity": "150", "unit": "g", "name": "iogurte", "category": "laticinios"},
+      {"quantity": "1", "unit": "colher", "name": "mel", "category": "temperos"}
     ],
-    "steps": [
-      "Coloque iogurte no pote",
-      "Regue com mel",
-      "Adicione nozes"
-    ],
-    "prepTimeMinutes": 3,
-    "costLevel": "medium",
+    "steps": ["Misture e sirva"],
+    "prepTimeMinutes": 2,
+    "costLevel": "low",
     "tags": ["quick"],
-    "allergens": ["milk", "tree_nuts"],
-    "portability": ["lunchbox_ok", "needs_fridge"],
-    "nutritionNotes": "Probióticos e gorduras boas."
+    "allergens": ["milk"],
+    "portability": [],
+    "nutritionNotes": "Probióticos."
   },
   {
     "id": "rec036",
@@ -756,19 +579,14 @@
     "ingredients": [
       {"quantity": "1/2", "unit": "unidade", "name": "maçã", "category": "hortifruti"},
       {"quantity": "1/2", "unit": "unidade", "name": "banana", "category": "hortifruti"},
-      {"quantity": "5", "unit": "unidades", "name": "uvas", "category": "hortifruti"},
-      {"quantity": "1", "unit": "colher", "name": "suco de laranja", "category": "temperos"}
+      {"quantity": "5", "unit": "unidades", "name": "uvas", "category": "hortifruti"}
     ],
-    "steps": [
-      "Corte todas as frutas",
-      "Regue com suco de laranja",
-      "Misture"
-    ],
+    "steps": ["Corte frutas", "Misture"],
     "prepTimeMinutes": 10,
     "costLevel": "medium",
     "tags": ["quick", "kid_friendly"],
     "allergens": [],
-    "portability": ["lunchbox_ok", "needs_fridge"],
+    "portability": ["lunchbox_ok"],
     "nutritionNotes": "Vitaminas variadas."
   },
   {
@@ -776,39 +594,31 @@
     "name": "Pão com Requeijão",
     "mealPeriod": "afternoonSnack",
     "ingredients": [
-      {"quantity": "2", "unit": "fatias", "name": "pão integral", "category": "graos"},
-      {"quantity": "2", "unit": "colheres", "name": "requeijão light", "category": "laticinios"}
+      {"quantity": "2", "unit": "fatias", "name": "pão", "category": "graos"},
+      {"quantity": "2", "unit": "colheres", "name": "requeijão", "category": "laticinios"}
     ],
-    "steps": [
-      "Torre o pão",
-      "Espalhe requeijão"
-    ],
+    "steps": ["Torre pão", "Espalhe requeijão"],
     "prepTimeMinutes": 3,
     "costLevel": "low",
     "tags": ["quick"],
     "allergens": ["gluten", "milk"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Lanche rápido e prático."
+    "nutritionNotes": "Prático."
   },
   {
     "id": "rec038",
     "name": "Chips de Maçã",
     "mealPeriod": "afternoonSnack",
     "ingredients": [
-      {"quantity": "2", "unit": "unidades", "name": "maçãs", "category": "hortifruti"},
-      {"quantity": "1", "unit": "pitada", "name": "canela", "category": "temperos"}
+      {"quantity": "2", "unit": "unidades", "name": "maçãs", "category": "hortifruti"}
     ],
-    "steps": [
-      "Corte maçãs em rodelas finas",
-      "Polvilhe canela",
-      "Asse até crocante"
-    ],
+    "steps": ["Corte fino", "Asse até crocante"],
     "prepTimeMinutes": 30,
     "costLevel": "low",
     "tags": ["kid_friendly"],
     "allergens": [],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Snack natural e crocante."
+    "nutritionNotes": "Snack natural."
   },
   {
     "id": "rec039",
@@ -816,171 +626,347 @@
     "mealPeriod": "afternoonSnack",
     "ingredients": [
       {"quantity": "1/2", "unit": "unidade", "name": "abacate", "category": "hortifruti"},
-      {"quantity": "200", "unit": "ml", "name": "leite", "category": "laticinios"},
-      {"quantity": "1", "unit": "colher", "name": "mel", "category": "temperos"}
+      {"quantity": "200", "unit": "ml", "name": "leite", "category": "laticinios"}
     ],
-    "steps": [
-      "Bata tudo no liquidificador",
-      "Sirva gelado"
-    ],
+    "steps": ["Bata tudo"],
     "prepTimeMinutes": 5,
     "costLevel": "medium",
     "tags": ["quick"],
     "allergens": ["milk"],
     "portability": [],
-    "nutritionNotes": "Gorduras boas para desenvolvimento."
+    "nutritionNotes": "Gorduras boas."
   },
   {
     "id": "rec040",
-    "name": "Mini Sanduíche de Queijo",
+    "name": "Mini Sanduíche",
     "mealPeriod": "afternoonSnack",
     "ingredients": [
-      {"quantity": "2", "unit": "fatias", "name": "pão de forma", "category": "graos"},
-      {"quantity": "1", "unit": "fatia", "name": "queijo prato", "category": "laticinios"}
+      {"quantity": "2", "unit": "fatias", "name": "pão", "category": "graos"},
+      {"quantity": "1", "unit": "fatia", "name": "queijo", "category": "laticinios"}
     ],
-    "steps": [
-      "Monte sanduíche",
-      "Torre na sanduicheira",
-      "Corte em triângulos"
-    ],
+    "steps": ["Monte", "Torre"],
     "prepTimeMinutes": 5,
     "costLevel": "low",
     "tags": ["quick", "kid_friendly"],
     "allergens": ["gluten", "milk"],
     "portability": ["lunchbox_ok"],
-    "nutritionNotes": "Cálcio e carboidrato."
+    "nutritionNotes": "Cálcio."
   },
   {
     "id": "rec041",
-    "name": "Sopa de Frango com Arroz",
+    "name": "Sopa de Frango",
     "mealPeriod": "dinner",
     "ingredients": [
-      {"quantity": "80", "unit": "g", "name": "frango desfiado", "category": "proteinas"},
-      {"quantity": "1/2", "unit": "xícara", "name": "arroz", "category": "graos"},
-      {"quantity": "1", "unit": "unidade", "name": "cenoura", "category": "hortifruti"},
-      {"quantity": "2", "unit": "xícaras", "name": "caldo de legumes", "category": "temperos"}
+      {"quantity": "80", "unit": "g", "name": "frango", "category": "proteinas"},
+      {"quantity": "1", "unit": "unidade", "name": "cenoura", "category": "hortifruti"}
     ],
-    "steps": [
-      "Cozinhe frango no caldo",
-      "Adicione arroz e cenoura",
-      "Cozinhe até ficar macio"
-    ],
+    "steps": ["Cozinhe tudo junto"],
     "prepTimeMinutes": 25,
     "costLevel": "low",
     "tags": ["kid_friendly"],
     "allergens": [],
     "portability": [],
-    "nutritionNotes": "Leve e reconfortante para a noite."
+    "nutritionNotes": "Leve para noite."
   },
   {
     "id": "rec042",
-    "name": "Panqueca de Frango",
+    "name": "Panqueca Recheada",
     "mealPeriod": "dinner",
     "ingredients": [
-      {"quantity": "2", "unit": "unidades", "name": "panquecas prontas", "category": "graos"},
-      {"quantity": "80", "unit": "g", "name": "frango desfiado", "category": "proteinas"},
-      {"quantity": "2", "unit": "colheres", "name": "molho de tomate", "category": "temperos"},
-      {"quantity": "2", "unit": "colheres", "name": "queijo ralado", "category": "laticinios"}
+      {"quantity": "2", "unit": "unidades", "name": "panquecas", "category": "graos"},
+      {"quantity": "80", "unit": "g", "name": "frango", "category": "proteinas"}
     ],
-    "steps": [
-      "Recheie panquecas com frango",
-      "Cubra com molho e queijo",
-      "Leve ao forno 10 min"
-    ],
+    "steps": ["Recheie", "Cubra com molho"],
     "prepTimeMinutes": 20,
     "costLevel": "medium",
     "tags": ["kid_friendly"],
-    "allergens": ["gluten", "milk", "egg"],
+    "allergens": ["gluten", "egg"],
     "portability": [],
-    "nutritionNotes": "Jantar completo e saboroso."
+    "nutritionNotes": "Completo."
   },
   {
     "id": "rec043",
-    "name": "Omelete Simples",
+    "name": "Omelete Light",
     "mealPeriod": "dinner",
     "ingredients": [
-      {"quantity": "2", "unit": "unidades", "name": "ovos", "category": "proteinas"},
-      {"quantity": "1", "unit": "colher", "name": "queijo ralado", "category": "laticinios"},
-      {"quantity": "1", "unit": "pitada", "name": "sal", "category": "temperos"}
+      {"quantity": "2", "unit": "unidades", "name": "ovos", "category": "proteinas"}
     ],
-    "steps": [
-      "Bata os ovos",
-      "Cozinhe em frigideira",
-      "Adicione queijo"
-    ],
+    "steps": ["Bata", "Cozinhe"],
     "prepTimeMinutes": 7,
     "costLevel": "low",
     "tags": ["quick", "high_protein"],
-    "allergens": ["egg", "milk"],
+    "allergens": ["egg"],
     "portability": [],
-    "nutritionNotes": "Proteína de rápida digestão."
+    "nutritionNotes": "Rápida digestão."
   },
   {
     "id": "rec044",
-    "name": "Purê de Batata com Frango",
+    "name": "Purê com Frango",
     "mealPeriod": "dinner",
     "ingredients": [
       {"quantity": "2", "unit": "unidades", "name": "batatas", "category": "graos"},
-      {"quantity": "80", "unit": "g", "name": "frango desfiado", "category": "proteinas"},
-      {"quantity": "2", "unit": "colheres", "name": "leite", "category": "laticinios"}
+      {"quantity": "80", "unit": "g", "name": "frango", "category": "proteinas"}
     ],
-    "steps": [
-      "Cozinhe batatas",
-      "Amasse com leite",
-      "Misture frango"
-    ],
+    "steps": ["Cozinhe batatas", "Amasse", "Misture frango"],
     "prepTimeMinutes": 25,
     "costLevel": "low",
     "tags": ["kid_friendly"],
-    "allergens": ["milk"],
+    "allergens": [],
     "portability": [],
-    "nutritionNotes": "Cremoso e nutritivo."
+    "nutritionNotes": "Cremoso."
   },
   {
     "id": "rec045",
-    "name": "Macarrão com Manteiga",
+    "name": "Macarrão Simples",
     "mealPeriod": "dinner",
     "ingredients": [
       {"quantity": "100", "unit": "g", "name": "macarrão", "category": "graos"},
-      {"quantity": "1", "unit": "colher", "name": "manteiga", "category": "laticinios"},
-      {"quantity": "2", "unit": "colheres", "name": "queijo ralado", "category": "laticinios"}
+      {"quantity": "1", "unit": "colher", "name": "manteiga", "category": "laticinios"}
     ],
-    "steps": [
-      "Cozinhe macarrão",
-      "Misture manteiga e queijo"
-    ],
+    "steps": ["Cozinhe", "Misture manteiga"],
     "prepTimeMinutes": 15,
     "costLevel": "low",
     "tags": ["quick", "kid_friendly"],
     "allergens": ["gluten", "milk"],
     "portability": [],
-    "nutritionNotes": "Clássico que as crianças amam."
+    "nutritionNotes": "Clássico."
   },
   {
     "id": "rec046",
     "name": "Peixe ao Vapor",
     "mealPeriod": "dinner",
     "ingredients": [
-      {"quantity": "100", "unit": "g", "name": "filé de peixe", "category": "proteinas"},
-      {"quantity": "1/2", "unit": "unidade", "name": "limão", "category": "temperos"},
-      {"quantity": "1", "unit": "fio", "name": "azeite", "category": "temperos"}
+      {"quantity": "100", "unit": "g", "name": "filé de peixe", "category": "proteinas"}
     ],
-    "steps": [
-      "Tempere peixe com limão",
-      "Cozinhe no vapor",
-      "Regue com azeite"
-    ],
+    "steps": ["Tempere", "Cozinhe no vapor"],
     "prepTimeMinutes": 15,
     "costLevel": "medium",
-    "tags": ["quick", "high_protein"],
+    "tags": ["quick"],
     "allergens": ["fish"],
     "portability": [],
-    "nutritionNotes": "Leve e rico em ômega-3."
+    "nutritionNotes": "Leve."
   },
   {
     "id": "rec047",
     "name": "Arroz com Ovo",
     "mealPeriod": "dinner",
     "ingredients": [
-      {"
-
+      {"quantity": "1", "unit": "xícara", "name": "arroz", "category": "graos"},
+      {"quantity": "1", "unit": "unidade", "name": "ovo", "category": "proteinas"}
+    ],
+    "steps": ["Cozinhe arroz", "Frite ovo", "Sirva"],
+    "prepTimeMinutes": 20,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": ["egg"],
+    "portability": [],
+    "nutritionNotes": "Simples e nutritivo."
+  },
+  {
+    "id": "rec048",
+    "name": "Wrap Light",
+    "mealPeriod": "dinner",
+    "ingredients": [
+      {"quantity": "1", "unit": "unidade", "name": "tortilha", "category": "graos"},
+      {"quantity": "50", "unit": "g", "name": "frango", "category": "proteinas"},
+      {"quantity": "1", "unit": "folha", "name": "alface", "category": "hortifruti"}
+    ],
+    "steps": ["Recheie", "Enrole"],
+    "prepTimeMinutes": 10,
+    "costLevel": "medium",
+    "tags": ["quick"],
+    "allergens": ["gluten"],
+    "portability": [],
+    "nutritionNotes": "Leve para noite."
+  },
+  {
+    "id": "rec049",
+    "name": "Batata Cozida",
+    "mealPeriod": "dinner",
+    "ingredients": [
+      {"quantity": "2", "unit": "unidades", "name": "batatas", "category": "graos"},
+      {"quantity": "1", "unit": "colher", "name": "requeijão", "category": "laticinios"}
+    ],
+    "steps": ["Cozinhe batatas", "Sirva com requeijão"],
+    "prepTimeMinutes": 20,
+    "costLevel": "low",
+    "tags": ["kid_friendly"],
+    "allergens": ["milk"],
+    "portability": [],
+    "nutritionNotes": "Simples e gostoso."
+  },
+  {
+    "id": "rec050",
+    "name": "Mini Quiche",
+    "mealPeriod": "dinner",
+    "ingredients": [
+      {"quantity": "2", "unit": "unidades", "name": "ovos", "category": "proteinas"},
+      {"quantity": "50", "unit": "g", "name": "queijo", "category": "laticinios"},
+      {"quantity": "1", "unit": "unidade", "name": "tomate", "category": "hortifruti"}
+    ],
+    "steps": ["Misture tudo", "Asse em forminhas"],
+    "prepTimeMinutes": 25,
+    "costLevel": "medium",
+    "tags": ["kid_friendly"],
+    "allergens": ["egg", "milk"],
+    "portability": [],
+    "nutritionNotes": "Proteína e sabor."
+  },
+  {
+    "id": "rec051",
+    "name": "Leite com Biscoito",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "200", "unit": "ml", "name": "leite morno", "category": "laticinios"},
+      {"quantity": "3", "unit": "unidades", "name": "biscoitos integrais", "category": "graos"}
+    ],
+    "steps": ["Aqueça leite", "Sirva com biscoitos"],
+    "prepTimeMinutes": 3,
+    "costLevel": "low",
+    "tags": ["quick", "kid_friendly"],
+    "allergens": ["milk", "gluten"],
+    "portability": [],
+    "nutritionNotes": "Calmante para dormir."
+  },
+  {
+    "id": "rec052",
+    "name": "Iogurte Natural",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "150", "unit": "g", "name": "iogurte", "category": "laticinios"},
+      {"quantity": "1", "unit": "colher", "name": "mel", "category": "temperos"}
+    ],
+    "steps": ["Misture e sirva"],
+    "prepTimeMinutes": 2,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": ["milk"],
+    "portability": [],
+    "nutritionNotes": "Probióticos."
+  },
+  {
+    "id": "rec053",
+    "name": "Banana com Aveia",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "1", "unit": "unidade", "name": "banana", "category": "hortifruti"},
+      {"quantity": "1", "unit": "colher", "name": "aveia", "category": "graos"}
+    ],
+    "steps": ["Amasse banana", "Misture aveia"],
+    "prepTimeMinutes": 3,
+    "costLevel": "low",
+    "tags": ["quick", "kid_friendly"],
+    "allergens": [],
+    "portability": [],
+    "nutritionNotes": "Triptofano para sono."
+  },
+  {
+    "id": "rec054",
+    "name": "Vitamina Morna",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "1", "unit": "unidade", "name": "banana", "category": "hortifruti"},
+      {"quantity": "200", "unit": "ml", "name": "leite morno", "category": "laticinios"}
+    ],
+    "steps": ["Bata tudo", "Sirva morno"],
+    "prepTimeMinutes": 5,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": ["milk"],
+    "portability": [],
+    "nutritionNotes": "Relaxante."
+  },
+  {
+    "id": "rec055",
+    "name": "Mingau Light",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "2", "unit": "colheres", "name": "aveia", "category": "graos"},
+      {"quantity": "150", "unit": "ml", "name": "leite", "category": "laticinios"}
+    ],
+    "steps": ["Cozinhe mexendo"],
+    "prepTimeMinutes": 7,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": ["milk"],
+    "portability": [],
+    "nutritionNotes": "Leve e nutritivo."
+  },
+  {
+    "id": "rec056",
+    "name": "Chá com Torrada",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "1", "unit": "xícara", "name": "chá de camomila", "category": "temperos"},
+      {"quantity": "2", "unit": "fatias", "name": "torrada", "category": "graos"}
+    ],
+    "steps": ["Prepare chá", "Torre pão"],
+    "prepTimeMinutes": 5,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": ["gluten"],
+    "portability": [],
+    "nutritionNotes": "Calmante."
+  },
+  {
+    "id": "rec057",
+    "name": "Frutas Leves",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "1", "unit": "unidade", "name": "maçã", "category": "hortifruti"},
+      {"quantity": "5", "unit": "unidades", "name": "uvas", "category": "hortifruti"}
+    ],
+    "steps": ["Lave", "Corte", "Sirva"],
+    "prepTimeMinutes": 5,
+    "costLevel": "medium",
+    "tags": ["quick", "kid_friendly"],
+    "allergens": [],
+    "portability": [],
+    "nutritionNotes": "Leve e refrescante."
+  },
+  {
+    "id": "rec058",
+    "name": "Queijo Branco",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "30", "unit": "g", "name": "queijo branco", "category": "laticinios"}
+    ],
+    "steps": ["Corte", "Sirva"],
+    "prepTimeMinutes": 2,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": ["milk"],
+    "portability": [],
+    "nutritionNotes": "Proteína leve."
+  },
+  {
+    "id": "rec059",
+    "name": "Suco Natural Morno",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "1", "unit": "unidade", "name": "laranja", "category": "hortifruti"}
+    ],
+    "steps": ["Esprema", "Aqueça levemente"],
+    "prepTimeMinutes": 5,
+    "costLevel": "low",
+    "tags": ["quick"],
+    "allergens": [],
+    "portability": [],
+    "nutritionNotes": "Vitamina C."
+  },
+  {
+    "id": "rec060",
+    "name": "Biscoito de Polvilho",
+    "mealPeriod": "supper",
+    "ingredients": [
+      {"quantity": "5", "unit": "unidades", "name": "biscoitos de polvilho", "category": "graos"}
+    ],
+    "steps": ["Sirva"],
+    "prepTimeMinutes": 1,
+    "costLevel": "low",
+    "tags": ["quick", "kid_friendly"],
+    "allergens": [],
+    "portability": [],
+    "nutritionNotes": "Leve e sem glúten."
+  }
+]
