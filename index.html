@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏁 Cardápio Turbo Kids</title>
+    <meta name="description" content="Acelere a nutrição do seu filho com cardápios personalizados">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="educational-notice">
+        ⚠️ <strong>Conteúdo educativo e geral.</strong> Para necessidades específicas, procure um profissional de saúde.
+    </div>
+
+    <header class="racing-header">
+        <div class="header-content">
+            <h1>🏎️ CARDÁPIO TURBO KIDS</h1>
+            <p class="tagline">Alimentação saudável em alta velocidade!</p>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <section id="form-section" class="turbo-card">
+            <form id="profile-form">
+                <h2>🏁 Dados do Piloto</h2>
+
+                <div class="input-group">
+                    <label for="age-years">Idade (anos) *</label>
+                    <input type="number" id="age-years" name="ageYears" min="1" max="18" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="age-months">Meses adicionais</label>
+                    <input type="number" id="age-months" name="ageMonths" min="0" max="11" value="0">
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="weight">Peso (kg)</label>
+                        <input type="number" id="weight" name="weight" min="5" max="150" step="0.1">
+                    </div>
+                    <div class="input-group">
+                        <label for="height">Altura (cm)</label>
+                        <input type="number" id="height" name="height" min="50" max="200" step="0.1">
+                    </div>
+                </div>
+
+                <h3>🏎️ Rotina</h3>
+
+                <div class="checkbox-turbo">
+                    <input type="checkbox" id="goes-to-school" name="goesToSchool">
+                    <label for="goes-to-school">Vai à escola?</label>
+                </div>
+
+                <div class="checkbox-turbo" id="full-time-wrapper" style="display: none;">
+                    <input type="checkbox" id="full-time" name="fullTime">
+                    <label for="full-time">Período integral?</label>
+                </div>
+
+                <div class="input-group">
+                    <label for="activity-level">Nível de Atividade</label>
+                    <select id="activity-level" name="activityLevel" required>
+                        <option value="low">🚗 Baixo</option>
+                        <option value="medium" selected>🏎️ Médio</option>
+                        <option value="high">🚀 Alto</option>
+                    </select>
+                </div>
+
+                <h3>🚨 Alergias</h3>
+                <div class="allergen-grid">
+                    <label class="allergen-card">
+                        <input type="checkbox" name="allergens" value="milk">
+                        <span>🥛 Leite</span>
+                    </label>
+                    <label class="allergen-card">
+                        <input type="checkbox" name="allergens" value="egg">
+                        <span>🥚 Ovo</span>
+                    </label>
+                    <label class="allergen-card">
+                        <input type="checkbox" name="allergens" value="gluten">
+                        <span>🌾 Glúten</span>
+                    </label>
+                    <label class="allergen-card">
+                        <input type="checkbox" name="allergens" value="peanut">
+                        <span>🥜 Amendoim</span>
+                    </label>
+                    <label class="allergen-card">
+                        <input type="checkbox" name="allergens" value="tree_nuts">
+                        <span>🌰 Castanhas</span>
+                    </label>
+                    <label class="allergen-card">
+                        <input type="checkbox" name="allergens" value="soy">
+                        <span>🫘 Soja</span>
+                    </label>
+                    <label class="allergen-card">
+                        <input type="checkbox" name="allergens" value="fish">
+                        <span>🐟 Peixe</span>
+                    </label>
+                </div>
+
+                <div class="input-group">
+                    <label for="other-restrictions">Outras restrições</label>
+                    <input type="text" id="other-restrictions" name="otherRestrictions">
+                </div>
+
+                <h3>❤️ Preferências</h3>
+
+                <details>
+                    <summary>☀️ Café da Manhã</summary>
+                    <div class="input-group">
+                        <label for="pref-breakfast">Gosta 👍</label>
+                        <input type="text" id="pref-breakfast" name="prefBreakfast">
+                    </div>
+                    <div class="input-group">
+                        <label for="avoid-breakfast">Não gosta 👎</label>
+                        <input type="text" id="avoid-breakfast" name="avoidBreakfast">
+                    </div>
+                </details>
+
+                <details>
+                    <summary>🎒 Lanche da Escola</summary>
+                    <div class="input-group">
+                        <label for="pref-school-snack">Gosta 👍</label>
+                        <input type="text" id="pref-school-snack" name="prefSchoolSnack">
+                    </div>
+                    <div class="input-group">
+                        <label for="avoid-school-snack">Não gosta 👎</label>
+                        <input type="text" id="avoid-school-snack" name="avoidSchoolSnack">
+                    </div>
+                </details>
+
+                <details>
+                    <summary>🍽️ Almoço</summary>
+                    <div class="input-group">
+                        <label for="pref-lunch">Gosta 👍</label>
+                        <input type="text" id="pref-lunch" name="prefLunch">
+                    </div>
+                    <div class="input-group">
+                        <label for="avoid-lunch">Não gosta 👎</label>
+                        <input type="text" id="avoid-lunch" name="avoidLunch">
+                    </div>
+                </details>
+
+                <details>
+                    <summary>🥤 Café da Tarde</summary>
+                    <div class="input-group">
+                        <label for="pref-afternoon-snack">Gosta 👍</label>
+                        <input type="text" id="pref-afternoon-snack" name="prefAfternoonSnack">
+                    </div>
+                    <div class="input-group">
+                        <label for="avoid-afternoon-snack">Não gosta 👎</label>
+                        <input type="text" id="avoid-afternoon-snack" name="avoidAfternoonSnack">
+                    </div>
+                </details>
+
+                <details>
+                    <summary>🌙 Jantar</summary>
+                    <div class="input-group">
+                        <label for="pref-dinner">Gosta 👍</label>
+                        <input type="text" id="pref-dinner" name="prefDinner">
+                    </div>
+                    <div class="input-group">
+                        <label for="avoid-dinner">Não gosta 👎</label>
+                        <input type="text" id="avoid-dinner" name="avoidDinner">
+                    </div>
+                </details>
+
+                <details>
+                    <summary>🌜 Ceia</summary>
+                    <div class="input-group">
+                        <label for="pref-supper">Gosta 👍</label>
+                        <input type="text" id="pref-supper" name="prefSupper">
+                    </div>
+                    <div class="input-group">
+                        <label for="avoid-supper">Não gosta 👎</label>
+                        <input type="text" id="avoid-supper" name="avoidSupper">
+                    </div>
+                </details>
+
+                <h3>⚙️ Configurações</h3>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="prep-time">Tempo de Preparo</label>
+                        <select id="prep-time" name="prepTime">
+                            <option value="any">Qualquer</option>
+                            <option value="10" selected>Até 10 min</option>
+                            <option value="20">Até 20 min</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cost-level">Custo</label>
+                        <select id="cost-level" name="costLevel">
+                            <option value="any">Qualquer</option>
+                            <option value="low" selected>Baixo</option>
+                            <option value="medium">Médio</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" class="btn-turbo btn-primary">
+                        🏁 GERAR CARDÁPIO!
+                    </button>
+                    <button type="button" id="reset-btn" class="btn-turbo btn-secondary">
+                        🔄 Resetar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section id="menu-section" class="hidden">
+            <div class="race-header">
+                <h2>🏆 SEU CARDÁPIO DO DIA</h2>
+                <button id="generate-another-btn" class="btn-turbo btn-secondary">
+                    🔄 Gerar Outro
+                </button>
+            </div>
+
+            <div id="meals-container"></div>
+
+            <div id="shopping-list-section" class="turbo-card">
+                <h3>🛒 Lista de Compras</h3>
+                <div id="shopping-list"></div>
+            </div>
+        </section>
+
+        <section class="turbo-card">
+            <h3>🔒 Privacidade</h3>
+            <ul class="privacy-list">
+                <li>✅ Dados salvos apenas no seu dispositivo</li>
+                <li>✅ Nenhuma informação enviada para servidores</li>
+                <li>✅ Você controla seus dados</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="racing-footer">
+        <p>🏎️ Desenvolvido com velocidade para famílias saudáveis!</p>
+        <p><small>Conteúdo educativo. Consulte um nutricionista.</small></p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
