@@ -48,37 +48,3 @@
   {"id":"rec047","name":"Arroz com Ovo","mealPeriod":"dinner","ingredients":[{"quantity":"1","unit":"xicara","name":"arroz","category":"graos"}],"steps":["Cozinhe","Frite ovo"],"prepTimeMinutes":20,"costLevel":"low","tags":["quick"],"allergens":["egg"],"portability":[],"nutritionNotes":"Simples."},
   {"id":"rec048","name":"Wrap Light","mealPeriod":"dinner","ingredients":[{"quantity":"1","unit":"unidade","name":"tortilha","category":"graos"}],"steps":["Recheie","Enrole"],"prepTimeMinutes":10,"costLevel":"medium","tags":["quick"],"allergens":["gluten"],"portability":[],"nutritionNotes":"Leve."},
   {"id":"rec049","name":"Batata Cozida","mealPeriod":"dinner","ingredients":[{"quantity":"2","unit":"unidades","name":"batatas","category":"graos"}],"steps":["Cozinhe"],"prepTimeMinutes":20,"costLevel":"low","tags":["kid_friendly"],"allergens":[],"portability":[],"nutritionNotes":"Simples."},
-  {"id":"<think>
-O usuário está recebendo o MESMO erro ainda. Isso é estranho porque eu acabei de enviar um JSON compactado e validado. 
-
-Possibilidades:
-1. Ele não substituiu o arquivo ainda
-2. Ele copiou errado
-3. O GitHub ainda está servindo a versão antiga (cache)
-4. Há algum problema na cópia/cola
-
-O erro menciona "position 34590 (line 985 column 9)" - isso indica um arquivo MUITO maior que o que eu acabei de enviar (meu JSON compacto tem cerca de 60 receitas e não deve ter 985 linhas).
-
-Isso sugere que:
-- Ele ainda está usando o arquivo ANTIGO
-- Ou ele não substituiu corretamente
-- Ou o GitHub ainda não atualizou
-
-Preciso:
-1. Confirmar que ele substituiu o arquivo
-2. Pedir para ele limpar o cache
-3. Ver o conteúdo atual do arquivo no GitHub
-4. Dar instruções mais claras de como verificar se a substituição funcionou
-</think>
-
-# ⚠️ AINDA O MESMO ERRO?
-
-Isso significa que o arquivo **NÃO foi substituído corretamente** ou o navegador está usando **cache antigo**.
-
----
-
-## 🔍 **VERIFICAR SE O ARQUIVO FOI ATUALIZADO**
-
-### **Passo 1: Abra diretamente o JSON no navegador**
-
-Abra essa URL em uma **aba anônima** (Ctrl+Shift+N):
