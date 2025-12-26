@@ -1,57 +1,32 @@
-// PAINEL ADMIN - GERENCIAMENTO DE RECEITAS
+// ADMIN PANEL - Cardapio Turbo
 
-const PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'; // admin123
-const MAX_ATTEMPTS = 5;
-const COOLDOWN_TIME = 30000;
-
+const PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
 let recipes = [];
 let isAuthenticated = false;
-let loginAttempts = 0;
-let cooldownUntil = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkSession();
-    setupLoginListeners();
-});
-
-function checkSession() {
     if (sessionStorage.getItem('adminAuth') === 'authenticated') {
         isAuthenticated = true;
         showAdminPanel();
     }
-}
 
-function setupLoginListeners() {
     document.getElementById('login-form').addEventListener('submit', handleLogin);
-}
+});
 
 async function handleLogin(e) {
     e.preventDefault();
-
-    const now = Date.now();
-    if (now < cooldownUntil) {
-        const remaining = Math.ceil((cooldownUntil - now) / 1000);
-        showError(`Aguarde ${remaining}s antes de tentar novamente.`);
-        return;
-    }
 
     const password = document.getElementById('admin-password').value;
     const hash = await sha256(password);
 
     if (hash === PASSWORD_HASH) {
-        loginAttempts = 0;
         isAuthenticated = true;
         sessionStorage.setItem('adminAuth', 'authenticated');
         showAdminPanel();
     } else {
-        loginAttempts++;
-        if (loginAttempts >= MAX_ATTEMPTS) {
-            cooldownUntil = now + COOLDOWN_TIME;
-            loginAttempts = 0;
-            showError('Muitas tentativas. Aguarde 30 segundos.');
-        } else {
-            showError(`Senha incorreta. ${MAX_ATTEMPTS - loginAttempts} tentativas restantes.`);
-        }
+        const errorDiv = document.getElementById('login-error');
+        errorDiv.textContent = 'Senha incorreta';
+        errorDiv.classList.remove('hidden');
     }
 }
 
@@ -60,12 +35,6 @@ async function sha256(message) {
     const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-function showError(message) {
-    const errorDiv = document.getElementById('login-error');
-    errorDiv.textContent = message;
-    errorDiv.classList.remove('hidden');
 }
 
 function showAdminPanel() {
@@ -102,9 +71,9 @@ async function loadRecipes() {
     try {
         const response = await fetch('../data/recipes.json');
         recipes = await response.json();
-        console.log(`✅ ${recipes.length} receitas carregadas`);
+        console.log('Receitas carregadas:', recipes.length);
     } catch (error) {
-        console.error('❌ Erro:', error);
+        console.error('Erro ao carregar receitas:', error);
         recipes = [];
     }
 }
@@ -113,7 +82,7 @@ function renderRecipesList(filtered = null) {
     const container = document.getElementById('recipes-list');
     const recipesToShow = filtered || recipes;
 
-    document.getElementById('recipe-count').textContent = `${recipesToShow.length} receitas`;
+    document.getElementById('recipe-count').textContent = recipesToShow.length + ' receitas';
 
     if (recipesToShow.length === 0) {
         container.innerHTML = '<div class="turbo-card"><p>Nenhuma receita encontrada.</p></div>';
@@ -125,19 +94,16 @@ function renderRecipesList(filtered = null) {
     recipesToShow.forEach(recipe => {
         const card = document.createElement('div');
         card.className = 'turbo-card';
-        card.style.display = 'flex';
-        card.style.justifyContent = 'space-between';
-        card.style.alignItems = 'center';
-        card.style.gap = '1rem';
+        card.style.cssText = 'display:flex;justify-content:space-between;align-items:center;gap:1rem;';
 
         card.innerHTML = `
             <div>
-                <h3 style="margin: 0;">${recipe.name}</h3>
-                <p style="color: #999; margin: 0.5rem 0 0 0;">${getMealLabel(recipe.mealPeriod)} • ${recipe.prepTimeMinutes} min</p>
+                <h3 style="margin:0;">${recipe.name}</h3>
+                <p style="color:#999;margin:0.5rem 0 0 0;">${getMealLabel(recipe.mealPeriod)} • ${recipe.prepTimeMinutes} min</p>
             </div>
-            <div style="display: flex; gap: 0.5rem;">
-                <button class="btn-turbo btn-secondary" onclick="editRecipe('${recipe.id}')" style="padding: 0.5rem 1rem; min-height: auto;">✏️</button>
-                <button class="btn-turbo btn-secondary" onclick="deleteRecipe('${recipe.id}')" style="padding: 0.5rem 1rem; min-height: auto;">🗑️</button>
+            <div style="display:flex;gap:0.5rem;">
+                <button class="btn-turbo btn-secondary" onclick="editRecipe('${recipe.id}')" style="padding:0.5rem 1rem;min-height:auto;">Editar</button>
+                <button class="btn-turbo btn-secondary" onclick="deleteRecipe('${recipe.id}')" style="padding:0.5rem 1rem;min-height:auto;">Excluir</button>
             </div>
         `;
 
@@ -147,12 +113,12 @@ function renderRecipesList(filtered = null) {
 
 function getMealLabel(period) {
     const labels = {
-        breakfast: '☀️ Café',
-        schoolSnack: '🎒 Lanche',
-        lunch: '🍽️ Almoço',
-        afternoonSnack: '🥤 Tarde',
-        dinner: '🌙 Jantar',
-        supper: '🌜 Ceia'
+        breakfast: 'Café da Manhã',
+        schoolSnack: 'Lanche da Escola',
+        lunch: 'Almoço',
+        afternoonSnack: 'Café da Tarde',
+        dinner: 'Jantar',
+        supper: 'Ceia'
     };
     return labels[period] || period;
 }
@@ -201,7 +167,7 @@ function fillForm(recipe) {
     document.getElementById('recipe-time').value = recipe.prepTimeMinutes;
     document.getElementById('recipe-cost').value = recipe.costLevel;
 
-    const ingredientsText = recipe.ingredients.map(i => `${i.quantity} ${i.unit} ${i.name}, ${i.category}`).join('\n');
+    const ingredientsText = recipe.ingredients.map(i => i.quantity + ' ' + i.unit + ' ' + i.name + ', ' + i.category).join('\n');
     document.getElementById('recipe-ingredients').value = ingredientsText;
 
     document.getElementById('recipe-steps').value = recipe.steps.join('\n');
@@ -221,21 +187,18 @@ function saveRecipe(e) {
         const qtyAndName = parts[0];
         const category = parts[1] || 'temperos';
 
-        const match = qtyAndName.match(/
-^
-([\d.\/]+)\s*(\S+)\s+(.+)
-$
-/);
-        if (match) {
-            return {
-                quantity: match[1],
-                unit: match[2],
-                name: match[3],
-                category: category
-            };
-        }
-        return null;
-    }).filter(i => i !== null);
+        const words = qtyAndName.split(' ');
+        const quantity = words[0];
+        const unit = words[1];
+        const name = words.slice(2).join(' ');
+
+        return {
+            quantity: quantity,
+            unit: unit,
+            name: name,
+            category: category
+        };
+    });
 
     const stepsText = document.getElementById('recipe-steps').value;
     const steps = stepsText.split('\n').filter(s => s.trim());
@@ -257,31 +220,36 @@ $
         tags: tags,
         allergens: allergens,
         nutritionNotes: document.getElementById('recipe-nutrition').value,
-        portability: ['lunchbox_ok']
+        portability: []
     };
 
     if (id) {
         const index = recipes.findIndex(r => r.id === id);
-        if (index > -1) recipes[index] = recipe;
+        if (index > -1) {
+            recipes[index] = recipe;
+        }
     } else {
         recipes.push(recipe);
     }
 
     renderRecipesList();
     closeModal();
-    alert('✅ Receita salva! Não esqueça de exportar o JSON.');
+    alert('Receita salva! Exporte o JSON para atualizar o site.');
 }
 
 window.editRecipe = function(id) {
     const recipe = recipes.find(r => r.id === id);
-    if (recipe) openModal(recipe);
+    if (recipe) {
+        openModal(recipe);
+    }
 }
 
 window.deleteRecipe = function(id) {
     if (!confirm('Remover esta receita?')) return;
+
     recipes = recipes.filter(r => r.id !== id);
     renderRecipesList();
-    alert('✅ Receita removida! Não esqueça de exportar o JSON.');
+    alert('Receita removida! Exporte o JSON para atualizar o site.');
 }
 
 function importRecipes(e) {
@@ -293,16 +261,16 @@ function importRecipes(e) {
         try {
             const imported = JSON.parse(event.target.result);
             if (!Array.isArray(imported)) {
-                alert('❌ Formato inválido.');
+                alert('Formato invalido.');
                 return;
             }
-            if (confirm(`Importar ${imported.length} receitas?`)) {
+            if (confirm('Importar ' + imported.length + ' receitas?')) {
                 recipes = imported;
                 renderRecipesList();
-                alert('✅ Receitas importadas!');
+                alert('Receitas importadas!');
             }
         } catch (error) {
-            alert('❌ Erro: ' + error.message);
+            alert('Erro ao importar: ' + error.message);
         }
     };
     reader.readAsText(file);
@@ -319,5 +287,5 @@ function exportRecipes() {
     a.click();
 
     URL.revokeObjectURL(url);
-    alert('✅ JSON exportado! Agora substitua o arquivo no GitHub.');
+    alert('JSON exportado! Substitua o arquivo no GitHub.');
 }
