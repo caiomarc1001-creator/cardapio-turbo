@@ -290,3 +290,4 @@ function exportRecipes() {
     alert('JSON exportado! Substitua o arquivo no GitHub.');
 }
 
+
