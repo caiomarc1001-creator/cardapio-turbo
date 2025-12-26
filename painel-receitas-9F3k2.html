@@ -3,152 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔒 Admin - Receitas</title>
-    <meta name="robots" content="noindex">
+    <title>Admin - Cardapio Turbo</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="login-screen" class="login-container">
-        <div class="turbo-card" style="max-width: 400px; margin: 2rem auto;">
-            <h1>🔒 PAINEL ADMIN</h1>
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="admin-password">Senha</label>
-                    <input type="password" id="admin-password" required>
-                </div>
-                <button type="submit" class="btn-turbo btn-primary">Entrar</button>
-                <div id="login-error" class="hidden error-message"></div>
-            </form>
-            <p style="margin-top: 1rem; text-align: center; color: #999;">
-                <small>Senha padrão: admin123</small>
-            </p>
+    <div id="login-screen">
+        <div class="login-container">
+            <div class="turbo-card" style="max-width: 400px; margin: 0 auto;">
+                <h1>🔐 Admin</h1>
+                <p style="color: #999; margin-bottom: 2rem;">Senha padrao: admin123</p>
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="admin-password">Senha</label>
+                        <input type="password" id="admin-password" required>
+                    </div>
+                    <button type="submit" class="btn-turbo btn-primary" style="width: 100%;">Entrar</button>
+                    <div id="login-error" class="error-message hidden"></div>
+                </form>
+            </div>
         </div>
     </div>
 
     <div id="admin-panel" class="hidden">
-        <header class="racing-header">
+        <div class="racing-header">
             <div class="header-content">
-                <h1>📝 GERENCIAR RECEITAS</h1>
+                <h1>⚙️ Painel Admin</h1>
                 <button id="logout-btn" class="btn-turbo btn-secondary">Sair</button>
             </div>
-        </header>
+        </div>
 
-        <main class="main-container">
-            <section class="turbo-card">
-                <h2>📱 Como Atualizar o Site</h2>
-                <ol style="color: #ccc;">
-                    <li>Edite as receitas aqui</li>
-                    <li>Clique em "Exportar JSON"</li>
-                    <li>Substitua o arquivo data/recipes.json no GitHub</li>
-                    <li>Aguarde 1-2 minutos</li>
-                </ol>
-            </section>
-
-            <section class="turbo-card">
-                <div class="button-row">
-                    <button id="add-recipe-btn" class="btn-turbo btn-primary">➕ Nova Receita</button>
-                    <button id="export-btn" class="btn-turbo btn-secondary">📤 Exportar JSON</button>
-                    <button id="import-btn" class="btn-turbo btn-secondary">📥 Importar</button>
+        <div class="main-container">
+            <div class="turbo-card">
+                <div class="race-header">
+                    <div>
+                        <h2>Gerenciar Receitas</h2>
+                        <p id="recipe-count">0 receitas</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button id="add-recipe-btn" class="btn-turbo btn-primary">➕ Nova Receita</button>
+                        <button id="export-btn" class="btn-turbo btn-secondary">📤 Exportar JSON</button>
+                        <button id="import-btn" class="btn-turbo btn-secondary">📥 Importar JSON</button>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                    </div>
                 </div>
-                <input type="file" id="import-file" accept=".json" class="hidden">
-            </section>
 
-            <section class="turbo-card">
                 <div class="input-group">
                     <input type="text" id="search-input" placeholder="🔍 Buscar receita...">
                 </div>
+
                 <div class="input-group">
                     <select id="filter-meal">
                         <option value="">Todas as refeições</option>
-                        <option value="breakfast">☀️ Café da manhã</option>
-                        <option value="schoolSnack">🎒 Lanche da escola</option>
-                        <option value="lunch">🍽️ Almoço</option>
-                        <option value="afternoonSnack">🥤 Café da tarde</option>
-                        <option value="dinner">🌙 Jantar</option>
-                        <option value="supper">🌜 Ceia</option>
+                        <option value="breakfast">Café da Manhã</option>
+                        <option value="schoolSnack">Lanche da Escola</option>
+                        <option value="lunch">Almoço</option>
+                        <option value="afternoonSnack">Café da Tarde</option>
+                        <option value="dinner">Jantar</option>
+                        <option value="supper">Ceia</option>
                     </select>
                 </div>
-                <p id="recipe-count" style="color: #999; margin-top: 1rem;">0 receitas</p>
-            </section>
 
-            <div id="recipes-list"></div>
+                <div id="recipes-list"></div>
+            </div>
+        </div>
+    </div>
 
-            <div id="edit-modal" class="modal hidden">
-                <div class="turbo-card" style="max-width: 800px; margin: 2rem auto; max-height: 90vh; overflow-y: auto;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                        <h2 id="modal-title">Editar Receita</h2>
-                        <button id="close-modal" class="btn-turbo btn-secondary">✕</button>
+    <div id="edit-modal" class="modal hidden">
+        <div class="turbo-card" style="max-width: 800px; margin: 2rem auto; max-height: 90vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 id="modal-title">Nova Receita</h2>
+                <button id="close-modal" class="btn-turbo btn-secondary" style="padding: 0.5rem 1rem;">✕</button>
+            </div>
+
+            <form id="recipe-form">
+                <input type="hidden" id="recipe-id">
+
+                <div class="input-group">
+                    <label for="recipe-name">Nome da Receita</label>
+                    <input type="text" id="recipe-name" required>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="recipe-meal">Refeição</label>
+                        <select id="recipe-meal" required>
+                            <option value="breakfast">Café da Manhã</option>
+                            <option value="schoolSnack">Lanche da Escola</option>
+                            <option value="lunch">Almoço</option>
+                            <option value="afternoonSnack">Café da Tarde</option>
+                            <option value="dinner">Jantar</option>
+                            <option value="supper">Ceia</option>
+                        </select>
                     </div>
 
-                    <form id="recipe-form">
-                        <input type="hidden" id="recipe-id">
-
-                        <div class="input-group">
-                            <label for="recipe-name">Nome *</label>
-                            <input type="text" id="recipe-name" required>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="recipe-meal">Refeição *</label>
-                            <select id="recipe-meal" required>
-                                <option value="breakfast">Café da manhã</option>
-                                <option value="schoolSnack">Lanche da escola</option>
-                                <option value="lunch">Almoço</option>
-                                <option value="afternoonSnack">Café da tarde</option>
-                                <option value="dinner">Jantar</option>
-                                <option value="supper">Ceia</option>
-                            </select>
-                        </div>
-
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="recipe-time">Tempo (min) *</label>
-                                <input type="number" id="recipe-time" required>
-                            </div>
-                            <div class="input-group">
-                                <label for="recipe-cost">Custo *</label>
-                                <select id="recipe-cost" required>
-                                    <option value="low">Baixo</option>
-                                    <option value="medium">Médio</option>
-                                    <option value="high">Alto</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="recipe-ingredients">Ingredientes (um por linha) *</label>
-                            <textarea id="recipe-ingredients" rows="6" required 
-                                placeholder="200 g arroz, graos&#10;1 unidade tomate, hortifruti"></textarea>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="recipe-steps">Modo de preparo (um por linha) *</label>
-                            <textarea id="recipe-steps" rows="5" required></textarea>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="recipe-tags">Tags (separadas por vírgula)</label>
-                            <input type="text" id="recipe-tags" placeholder="high_fiber, kid_friendly">
-                        </div>
-
-                        <div class="input-group">
-                            <label for="recipe-allergens">Alergênicos (separados por vírgula)</label>
-                            <input type="text" id="recipe-allergens" placeholder="milk, egg">
-                        </div>
-
-                        <div class="input-group">
-                            <label for="recipe-nutrition">Nota educativa</label>
-                            <textarea id="recipe-nutrition" rows="3"></textarea>
-                        </div>
-
-                        <div class="button-row">
-                            <button type="submit" class="btn-turbo btn-primary">💾 Salvar</button>
-                            <button type="button" id="cancel-btn" class="btn-turbo btn-secondary">Cancelar</button>
-                        </div>
-                    </form>
+                    <div class="input-group">
+                        <label for="recipe-time">Tempo (min)</label>
+                        <input type="number" id="recipe-time" required>
+                    </div>
                 </div>
-            </div>
-        </main>
+
+                <div class="input-group">
+                    <label for="recipe-cost">Custo</label>
+                    <select id="recipe-cost" required>
+                        <option value="low">Baixo</option>
+                        <option value="medium">Médio</option>
+                        <option value="high">Alto</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="recipe-ingredients">Ingredientes (um por linha: quantidade unidade nome, categoria)</label>
+                    <textarea id="recipe-ingredients" rows="6" placeholder="Exemplo: 1 xicara arroz, graos" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="recipe-steps">Modo de Preparo (um passo por linha)</label>
+                    <textarea id="recipe-steps" rows="6" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="recipe-tags">Tags (separadas por vírgula)</label>
+                    <input type="text" id="recipe-tags" placeholder="quick, kid_friendly, high_protein">
+                </div>
+
+                <div class="input-group">
+                    <label for="recipe-allergens">Alérgenos (separados por vírgula)</label>
+                    <input type="text" id="recipe-allergens" placeholder="milk, egg, gluten">
+                </div>
+
+                <div class="input-group">
+                    <label for="recipe-nutrition">Notas Nutricionais</label>
+                    <textarea id="recipe-nutrition" rows="2"></textarea>
+                </div>
+
+                <div class="button-row">
+                    <button type="button" id="cancel-btn" class="btn-turbo btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn-turbo btn-primary">💾 Salvar</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="js/admin.js"></script>
