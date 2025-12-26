@@ -69,7 +69,7 @@ function logout() {
 
 async function loadRecipes() {
     try {
-           const response = await fetch('data/recipes.json');
+           const response = await fetch('/data/recipes.json');
         recipes = await response.json();
         console.log('Receitas carregadas:', recipes.length);
     } catch (error) {
@@ -289,5 +289,6 @@ function exportRecipes() {
     URL.revokeObjectURL(url);
     alert('JSON exportado! Substitua o arquivo no GitHub.');
 }
+
 
 
