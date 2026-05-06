@@ -16,10 +16,33 @@
         <div class="header-content">
             <h1>🏎️ CARDÁPIO TURBO KIDS</h1>
             <p class="tagline">Sugestões práticas para refeições infantis no dia a dia</p>
+            <div class="theme-switcher" aria-label="Escolha o tema visual">
+                <button type="button" class="theme-btn active" data-theme="turbo">Turbo</button>
+                <button type="button" class="theme-btn" data-theme="quadrinhos">Quadrinhos</button>
+                <button type="button" class="theme-btn" data-theme="fazendinha">Fazendinha</button>
+                <button type="button" class="theme-btn" data-theme="blocos">Blocos</button>
+                <button type="button" class="theme-btn" data-theme="arena">Arena</button>
+                <button type="button" class="theme-btn" data-theme="doce">Doce</button>
+                <button type="button" class="theme-btn" data-theme="familia">Azul Família</button>
+            </div>
         </div>
     </header>
 
     <main class="main-container">
+        <section class="intro-panel">
+            <div>
+                <p class="eyebrow">Planejamento alimentar infantil</p>
+                <h2>Monte um cardápio prático, variado e mais confiável para a semana da criança.</h2>
+                <p>O gerador usa preferências, alergias, rotina escolar, tempo de preparo e custo para sugerir refeições com foco em comida de verdade.</p>
+            </div>
+            <div class="feature-grid" aria-label="Principais recursos">
+                <div><strong>180</strong><span>receitas cadastradas</span></div>
+                <div><strong>30</strong><span>opções por refeição</span></div>
+                <div><strong>6</strong><span>momentos do dia</span></div>
+                <div><strong>1</strong><span>lista de compras</span></div>
+            </div>
+        </section>
+
         <section id="form-section" class="turbo-card">
             <form id="profile-form">
                 <h2>🏁 Perfil da criança</h2>
@@ -233,6 +256,18 @@
                 <li>✅ Nenhuma informação enviada para servidores</li>
                 <li>✅ Você controla seus dados</li>
             </ul>
+        </section>
+
+        <section class="turbo-card references-card">
+            <h3>📚 Critérios e fontes</h3>
+            <p>As sugestões são educativas e organizadas com base em princípios gerais de alimentação saudável: variedade, presença de frutas, verduras, legumes, cereais, tubérculos, leguminosas e proteínas, preferência por alimentos in natura ou minimamente processados e menor uso de ultraprocessados e açúcar adicionado.</p>
+            <ul class="reference-list">
+                <li><a href="https://www.gov.br/saude/pt-br/composicao/saps/ecv/publicacoes/guia-alimentar-para-populacao-brasileira/view" target="_blank" rel="noopener">Ministério da Saúde - Guia Alimentar para a População Brasileira</a></li>
+                <li><a href="https://www.gov.br/saude/pt-br/composicao/saps/promocao-da-saude/guias-alimentares/publicacoes/guia_da_crianca_2019.pdf/view" target="_blank" rel="noopener">Ministério da Saúde - Guia Alimentar para Crianças Brasileiras Menores de 2 Anos</a></li>
+                <li><a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-da-crianca/primeira-infancia/alimentacao-saudavel" target="_blank" rel="noopener">Ministério da Saúde - Alimentação saudável na infância</a></li>
+                <li><a href="https://www.sbp.com.br/especiais/pediatria-para-familias/nutricao/" target="_blank" rel="noopener">Sociedade Brasileira de Pediatria - orientações de nutrição para famílias</a></li>
+            </ul>
+            <p class="medical-note">Este site não é afiliado às instituições citadas e não substitui avaliação individual de pediatra, nutricionista ou outro profissional de saúde.</p>
         </section>
     </main>
 

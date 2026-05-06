@@ -11,10 +11,30 @@ let userHistory = {
 
 // INICIALIZAÇÃO
 document.addEventListener('DOMContentLoaded', async () => {
+    setupThemeSwitcher();
     await loadRecipes();
     loadUserHistory();
     setupEventListeners();
 });
+
+function setupThemeSwitcher() {
+    const savedTheme = localStorage.getItem('visualTheme') || 'turbo';
+    setVisualTheme(savedTheme);
+
+    document.querySelectorAll('.theme-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            setVisualTheme(button.dataset.theme);
+            localStorage.setItem('visualTheme', button.dataset.theme);
+        });
+    });
+}
+
+function setVisualTheme(theme) {
+    document.body.dataset.theme = theme;
+    document.querySelectorAll('.theme-btn').forEach(button => {
+        button.classList.toggle('active', button.dataset.theme === theme);
+    });
+}
 
 // CARREGAR RECEITAS
 async function loadRecipes() {
