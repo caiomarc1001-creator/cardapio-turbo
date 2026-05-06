@@ -1,4 +1,4 @@
-// CARDÁPIO TURBO KIDS - APP PRINCIPAL
+﻿// CARDÁPIO TURBO KIDS - APP PRINCIPAL
 
 let allRecipes = [];
 let currentProfile = null;
@@ -133,7 +133,7 @@ function parseList(str) {
 function generateDailyMenu(profile, recipes, history) {
     const mealPeriods = [
         { id: 'breakfast', name: '☀️ Café da Manhã' },
-        { id: 'schoolSnack', name: '🎒 Lanche da Escola' },
+        { id: 'schoolSnack', name: profile.goesToSchool ? '🎒 Lanche da Escola' : '🍎 Lanche da Manhã' },
         { id: 'lunch', name: '🍽️ Almoço' },
         { id: 'afternoonSnack', name: '🥤 Café da Tarde' },
         { id: 'dinner', name: '🌙 Jantar' },
@@ -199,8 +199,18 @@ function hasAllergens(recipe, allergens) {
 
 function hasDislikedIngredients(recipe, dislikes) {
     if (!dislikes || dislikes.length === 0) return false;
-    const recipeText = [recipe.name, ...recipe.ingredients.map(i => i.name)].join(' ').toLowerCase();
+    const recipeText = getRecipeSearchText(recipe);
     return dislikes.some(dislike => recipeText.includes(dislike));
+}
+
+function hasLikedIngredients(recipe, likes) {
+    if (!likes || likes.length === 0) return false;
+    const recipeText = getRecipeSearchText(recipe);
+    return likes.some(like => recipeText.includes(like));
+}
+
+function getRecipeSearchText(recipe) {
+    return [recipe.name, ...(recipe.ingredients || []).map(i => i.name), ...(recipe.tags || [])].join(' ').toLowerCase();
 }
 
 function pickRecipe(candidates, profile, history, dayContext) {
@@ -223,6 +233,9 @@ function pickRecipe(candidates, profile, history, dayContext) {
 
 function scoreRecipe(recipe, profile, history, dayContext) {
     let score = 100;
+    const prefs = profile.preferences[recipe.mealPeriod];
+
+    if (prefs && hasLikedIngredients(recipe, prefs.likes)) score += 25;
 
     const rating = history.ratings[recipe.id];
     if (rating) {
@@ -234,14 +247,30 @@ function scoreRecipe(recipe, profile, history, dayContext) {
 
     if (recipe.tags) {
         if (recipe.tags.includes('high_fiber')) score += 10;
+        if (recipe.tags.includes('high_protein')) score += 8;
         if (recipe.tags.includes('kid_friendly')) score += 8;
+        if (recipe.tags.includes('quick') && profile.prepTime !== 'any') score += 6;
     }
+
+    const protein = getFirstIngredientByCategory(recipe, 'proteinas');
+    const base = getFirstIngredientByCategory(recipe, 'graos');
+    if (protein && dayContext.usedProteins.includes(protein)) score -= 12;
+    if (base && dayContext.usedBases.includes(base)) score -= 6;
+    if (recipe.ingredients.some(ing => ing.category === 'hortifruti')) score += 10;
 
     return Math.max(score, 0);
 }
 
 function updateDayContext(context, recipe) {
-    // Simplificado para este exemplo
+    const protein = getFirstIngredientByCategory(recipe, 'proteinas');
+    const base = getFirstIngredientByCategory(recipe, 'graos');
+    if (protein) context.usedProteins.push(protein);
+    if (base) context.usedBases.push(base);
+}
+
+function getFirstIngredientByCategory(recipe, category) {
+    const ingredient = (recipe.ingredients || []).find(ing => ing.category === category);
+    return ingredient ? ingredient.name.toLowerCase() : null;
 }
 
 // EXIBIR MENU
@@ -436,3 +465,4 @@ function resetForm() {
         location.reload();
     }
 }
+

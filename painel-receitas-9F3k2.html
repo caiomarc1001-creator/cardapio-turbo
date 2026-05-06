@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Cardapio Turbo</title>
+    <meta name="robots" content="noindex">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -11,7 +12,7 @@
         <div class="login-container">
             <div class="turbo-card" style="max-width: 400px; margin: 0 auto;">
                 <h1>🔐 Admin</h1>
-                <p style="color: #999; margin-bottom: 2rem;">Senha padrao: admin123</p>
+                <p style="color: #999; margin-bottom: 2rem;">Ferramenta simples para editar e exportar receitas em JSON.</p>
                 <form id="login-form">
                     <div class="input-group">
                         <label for="admin-password">Senha</label>
@@ -34,6 +35,10 @@
 
         <div class="main-container">
             <div class="turbo-card">
+                <div class="educational-notice" style="border-radius: 8px; margin-bottom: 1.5rem;">
+                    ⚠️ Este painel é estático e não substitui um backend seguro. Use para editar, importar e exportar o arquivo JSON.
+                </div>
+
                 <div class="race-header">
                     <div>
                         <h2>Gerenciar Receitas</h2>
@@ -147,3 +152,4 @@
     <script src="js/admin.js"></script>
 </body>
 </html>
+

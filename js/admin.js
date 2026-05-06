@@ -1,4 +1,4 @@
-// ADMIN PANEL - Cardapio Turbo
+﻿// ADMIN PANEL - Cardapio Turbo
 
 const PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
 let recipes = [];
@@ -69,7 +69,8 @@ function logout() {
 
 async function loadRecipes() {
     try {
-        const response = await fetch('/cardapio-turbo/data/recipes.json');
+        const response = await fetch('data/recipes.json');
+        if (!response.ok) throw new Error('Arquivo data/recipes.json não encontrado.');
         recipes = await response.json();
         console.log('Receitas carregadas:', recipes.length);
     } catch (error) {
@@ -187,10 +188,14 @@ function saveRecipe(e) {
         const qtyAndName = parts[0];
         const category = parts[1] || 'temperos';
 
-        const words = qtyAndName.split(' ');
+        const words = qtyAndName.split(/\s+/);
         const quantity = words[0];
         const unit = words[1];
         const name = words.slice(2).join(' ');
+
+        if (!quantity || !unit || !name) {
+            throw new Error('Revise os ingredientes. Use: quantidade unidade nome, categoria');
+        }
 
         return {
             quantity: quantity,
@@ -220,7 +225,7 @@ function saveRecipe(e) {
         tags: tags,
         allergens: allergens,
         nutritionNotes: document.getElementById('recipe-nutrition').value,
-        portability: []
+        portability: document.getElementById('recipe-meal').value === 'schoolSnack' ? ['lunchbox_ok'] : []
     };
 
     if (id) {
@@ -289,3 +294,4 @@ function exportRecipes() {
     URL.revokeObjectURL(url);
     alert('JSON exportado! Substitua o arquivo no GitHub.');
 }
+
