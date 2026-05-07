@@ -321,8 +321,9 @@ function displayNutritionSummary(menu) {
     if (!container || !window.NutritionRules || !currentProfile) return;
 
     const rule = window.NutritionRules.getAgeNutritionRule(currentProfile.ageYears, currentProfile.ageMonths);
-    const estimate = window.NutritionRules.estimateMenuNutrition(menu);
+    const estimate = window.NutritionRules.estimateMenuNutrition(menu, currentProfile);
     const fit = window.NutritionRules.getMacroFit(estimate.macroPct, rule);
+    const weightGuidance = window.NutritionRules.getWeightGuidance(currentProfile);
 
     container.innerHTML = `
         <div class="turbo-card nutrition-card">
@@ -349,6 +350,18 @@ function displayNutritionSummary(menu) {
                 </div>
             </div>
 
+            ${weightGuidance.weight ? `
+                <div class="weight-guidance">
+                    <strong>Peso informado: ${weightGuidance.weight} kg</strong>
+                    <span>Proteína mínima diária de referência: ${weightGuidance.minProteinGDay} g/dia (${weightGuidance.proteinGPerKg} g/kg/dia). Porções ajustadas por fator ${weightGuidance.scale.toFixed(2)} em relação ao peso de referência da faixa etária.</span>
+                </div>
+            ` : `
+                <div class="weight-guidance">
+                    <strong>Peso não informado</strong>
+                    <span>As quantidades exibidas usam porção padrão da receita. Informe o peso para estimar porções mínimas ajustadas.</span>
+                </div>
+            `}
+
             <p class="medical-note">Estimativa educativa baseada nos ingredientes cadastrados. Não substitui avaliação individual e não calcula necessidades energéticas personalizadas.</p>
         </div>
     `;
@@ -369,6 +382,8 @@ function createMealCard(meal) {
     card.className = 'meal-card';
 
     const recipe = meal.recipe;
+    const recipeNutrition = window.NutritionRules?.estimateRecipeNutrition(recipe, currentProfile);
+    const ingredientPortions = window.NutritionRules?.getIngredientPortions(recipe, currentProfile) || [];
 
     card.innerHTML = `
         <div class="meal-title">${meal.periodName}</div>
@@ -376,6 +391,7 @@ function createMealCard(meal) {
         <div class="meal-meta">
             <span>⏱️ ${recipe.prepTimeMinutes} min</span>
             <span>💰 ${getCostLabel(recipe.costLevel)}</span>
+            ${recipeNutrition ? `<span>${recipeNutrition.kcal} kcal</span><span>C ${recipeNutrition.carbsG}g</span><span>P ${recipeNutrition.proteinG}g</span><span>G ${recipeNutrition.fatG}g</span>` : ''}
         </div>
         ${recipe.tags ? `<div class="meal-tags">${recipe.tags.map(tag => `<span class="tag">${formatTag(tag)}</span>`).join('')}</div>` : ''}
         ${recipe.nutritionNotes ? `<div class="nutrition-note">💡 ${recipe.nutritionNotes}</div>` : ''}
@@ -386,7 +402,22 @@ function createMealCard(meal) {
                 <span class="accordion-icon">▼</span>
             </div>
             <div class="accordion-content">
-                <ul>${recipe.ingredients.map(ing => `<li>${ing.quantity} ${ing.unit} ${ing.name}</li>`).join('')}</ul>
+                <div class="ingredient-table">
+                    <div class="ingredient-row ingredient-head">
+                        <span>Ingrediente</span>
+                        <span>Qtd.</span>
+                        <span>Mín. ajustado</span>
+                        <span>Macros</span>
+                    </div>
+                    ${ingredientPortions.map(item => `
+                        <div class="ingredient-row">
+                            <span>${item.name}</span>
+                            <span>${item.original}<small>${item.grams} g estimados</small></span>
+                            <span>${item.adjustedGrams} g</span>
+                            <span>${item.kcal} kcal • C ${item.carbsG}g • P ${item.proteinG}g • G ${item.fatG}g</span>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
         </div>
 

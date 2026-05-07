@@ -773,6 +773,70 @@ details[open] summary {
     border-color: rgba(255, 214, 10, 0.65);
 }
 
+.weight-guidance {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: center;
+    margin: 0.75rem 0;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid var(--stroke);
+    border-radius: 8px;
+    background: rgba(4, 16, 36, 0.38);
+    box-shadow: var(--inner);
+}
+
+.weight-guidance strong {
+    font-size: 0.92rem;
+    font-weight: 950;
+}
+
+.weight-guidance span {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.ingredient-table {
+    display: grid;
+    gap: 0.38rem;
+}
+
+.ingredient-row {
+    display: grid;
+    grid-template-columns: minmax(130px, 1.1fr) minmax(130px, 0.85fr) minmax(92px, 0.55fr) minmax(210px, 1.35fr);
+    gap: 0.55rem;
+    align-items: center;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid var(--stroke);
+    border-radius: 8px;
+    background: rgba(4, 16, 36, 0.28);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.ingredient-head {
+    color: var(--text-primary);
+    background: rgba(29, 132, 245, 0.24);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.ingredient-row span:first-child {
+    color: var(--text-primary);
+    font-weight: 950;
+}
+
+.ingredient-row small {
+    display: block;
+    margin-top: 0.1rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 750;
+}
+
 .shopping-category {
     margin-bottom: 1rem;
 }
@@ -889,6 +953,11 @@ details[open] summary {
 
     .hero-metrics,
     .input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .weight-guidance,
+    .ingredient-row {
         grid-template-columns: 1fr;
     }
 
