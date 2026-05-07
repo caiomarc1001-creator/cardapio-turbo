@@ -68,6 +68,26 @@
                 </div>
             </section>
 
+            <section class="side-card accessibility-card">
+                <span class="side-label">Tamanho da fonte</span>
+                <label>Topo
+                    <input type="range" class="font-control" data-font-target="topbar" min="90" max="135" value="100">
+                </label>
+                <label>Painel lateral
+                    <input type="range" class="font-control" data-font-target="sidebar" min="90" max="145" value="100">
+                </label>
+                <label>Formulário
+                    <input type="range" class="font-control" data-font-target="form" min="95" max="160" value="100">
+                </label>
+                <label>Resultados
+                    <input type="range" class="font-control" data-font-target="results" min="95" max="160" value="100">
+                </label>
+                <label>Resumo nutricional
+                    <input type="range" class="font-control" data-font-target="nutrition" min="95" max="160" value="100">
+                </label>
+                <button type="button" id="reset-fonts-btn" class="mini-action">Restaurar fontes</button>
+            </section>
+
             <section class="side-card warning-side">
                 <strong>Uso educativo</strong>
                 <p>Não substitui pediatra ou nutricionista, especialmente em alergias, doenças ou necessidades específicas.</p>
@@ -264,6 +284,16 @@
                             <option value="low" selected>Baixo</option>
                             <option value="medium">Médio</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="input-group recipe-mode-group">
+                    <label for="recipe-mode">Modo de receita</label>
+                    <div class="segmented-control" role="group" aria-label="Modo de receita">
+                        <input type="radio" id="mode-practical" name="recipeMode" value="practical" checked>
+                        <label for="mode-practical">Prática</label>
+                        <input type="radio" id="mode-complex" name="recipeMode" value="complex">
+                        <label for="mode-complex">Mais elaborada</label>
                     </div>
                 </div>
 

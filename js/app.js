@@ -12,6 +12,7 @@ let userHistory = {
 // INICIALIZAÇÃO
 document.addEventListener('DOMContentLoaded', async () => {
     setupThemeSwitcher();
+    setupFontControls();
     await loadRecipes();
     loadUserHistory();
     setupEventListeners();
@@ -34,6 +35,45 @@ function setVisualTheme(theme) {
     document.querySelectorAll('.theme-btn').forEach(button => {
         button.classList.toggle('active', button.dataset.theme === theme);
     });
+}
+
+function setupFontControls() {
+    let saved = {};
+    try {
+        saved = JSON.parse(localStorage.getItem('fontScaleBySection') || '{}');
+    } catch (error) {
+        saved = {};
+        localStorage.removeItem('fontScaleBySection');
+    }
+    const controls = document.querySelectorAll('.font-control');
+
+    controls.forEach(control => {
+        const target = control.dataset.fontTarget;
+        const value = saved[target] || control.value || 100;
+        control.value = value;
+        applySectionFontScale(target, value);
+
+        control.addEventListener('input', () => {
+            saved[target] = control.value;
+            applySectionFontScale(target, control.value);
+            localStorage.setItem('fontScaleBySection', JSON.stringify(saved));
+        });
+    });
+
+    const resetBtn = document.getElementById('reset-fonts-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            controls.forEach(control => {
+                control.value = 100;
+                applySectionFontScale(control.dataset.fontTarget, 100);
+            });
+            localStorage.removeItem('fontScaleBySection');
+        });
+    }
+}
+
+function applySectionFontScale(target, value) {
+    document.documentElement.style.setProperty(`--font-${target}`, `${Number(value) / 100}`);
 }
 
 // CARREGAR RECEITAS
@@ -140,7 +180,8 @@ function parseProfileFromForm() {
         otherRestrictions: parseList(formData.get('otherRestrictions')),
         preferences: preferences,
         prepTime: formData.get('prepTime') || 'any',
-        costLevel: formData.get('costLevel') || 'any'
+        costLevel: formData.get('costLevel') || 'any',
+        recipeMode: formData.get('recipeMode') || 'practical'
     };
 }
 
@@ -204,12 +245,26 @@ function filterRecipesForMeal(recipes, profile, mealPeriod) {
             if (profile.costLevel === 'medium' && recipe.costLevel === 'high') return false;
         }
 
+        if (profile.recipeMode === 'practical' && !isPracticalRecipe(recipe)) return false;
+
         if (mealPeriod === 'schoolSnack' && profile.goesToSchool) {
             if (!recipe.portability || !recipe.portability.includes('lunchbox_ok')) return false;
         }
 
         return true;
     });
+}
+
+function isPracticalRecipe(recipe) {
+    const ingredientsCount = (recipe.ingredients || []).length;
+    const stepsCount = (recipe.steps || []).length;
+    return recipe.prepTimeMinutes <= 20 || recipe.tags?.includes('quick') || (ingredientsCount <= 3 && stepsCount <= 3);
+}
+
+function getComplexityScore(recipe) {
+    const ingredientsCount = (recipe.ingredients || []).length;
+    const stepsCount = (recipe.steps || []).length;
+    return recipe.prepTimeMinutes + ingredientsCount * 3 + stepsCount * 2;
 }
 
 function hasAllergens(recipe, allergens) {
@@ -272,6 +327,18 @@ function scoreRecipe(recipe, profile, history, dayContext) {
         if (recipe.tags.includes('high_protein')) score += 8;
         if (recipe.tags.includes('kid_friendly')) score += 8;
         if (recipe.tags.includes('quick') && profile.prepTime !== 'any') score += 6;
+    }
+
+    const complexityScore = getComplexityScore(recipe);
+    if (profile.recipeMode === 'practical') {
+        score += recipe.tags?.includes('quick') ? 18 : 0;
+        score += Math.max(0, 22 - complexityScore * 0.55);
+    }
+
+    if (profile.recipeMode === 'complex') {
+        score += Math.min(24, complexityScore * 0.32);
+        if (recipe.prepTimeMinutes >= 15) score += 10;
+        if ((recipe.ingredients || []).length >= 4) score += 8;
     }
 
     const protein = getFirstIngredientByCategory(recipe, 'proteinas');
