@@ -539,6 +539,53 @@ details[open] summary {
 }
 
 /* EXPERIÊNCIA E TEMAS VISUAIS */
+body[data-theme="glass"] {
+    --racing-red: #4F46E5;
+    --racing-orange: #06B6D4;
+    --racing-yellow: #FDE68A;
+    --racing-silver: #EAF2FF;
+    --gradient-fire: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
+    --gradient-metal: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 64, 175, 0.72) 100%);
+    --text-primary: #FFFFFF;
+    --text-secondary: #DCEBFF;
+    --bg-primary: #08111F;
+    --bg-secondary: rgba(255, 255, 255, 0.09);
+    --bg-card: rgba(255, 255, 255, 0.13);
+    --shadow-glow: 0 0 34px rgba(6, 182, 212, 0.32);
+    --shadow-card: 0 18px 60px rgba(0, 0, 0, 0.38);
+}
+
+body[data-theme="glass"]::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(124, 58, 237, 0.35), transparent 34%),
+        radial-gradient(circle at 82% 12%, rgba(6, 182, 212, 0.28), transparent 30%),
+        radial-gradient(circle at 55% 90%, rgba(253, 230, 138, 0.16), transparent 28%),
+        #08111F;
+}
+
+body[data-theme="glass"] .racing-header,
+body[data-theme="glass"] .turbo-card,
+body[data-theme="glass"] .intro-panel,
+body[data-theme="glass"] .meal-card,
+body[data-theme="glass"] details,
+body[data-theme="glass"] .input-group input,
+body[data-theme="glass"] .input-group select,
+body[data-theme="glass"] .input-group textarea,
+body[data-theme="glass"] .allergen-card {
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+body[data-theme="glass"] .turbo-card,
+body[data-theme="glass"] .meal-card {
+    border-radius: 22px;
+}
+
 body[data-theme="quadrinhos"] {
     --racing-red: #D9273E;
     --racing-orange: #F59E0B;
@@ -727,9 +774,90 @@ body[data-theme="familia"] {
     border-radius: 8px;
 }
 
+.nutrition-summary {
+    margin-bottom: var(--spacing-lg);
+}
+
+.nutrition-card-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 0.25fr);
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.nutrition-kcal {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.nutrition-kcal strong {
+    font-size: 2.35rem;
+    color: var(--racing-yellow);
+    line-height: 1;
+}
+
+.nutrition-kcal span {
+    color: var(--text-secondary);
+    font-weight: 700;
+}
+
+.macro-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+}
+
+.macro-item {
+    min-height: 118px;
+    padding: var(--spacing-sm);
+    border-radius: 14px;
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.macro-item span {
+    color: var(--text-secondary);
+    font-weight: 800;
+}
+
+.macro-item strong {
+    font-size: 2rem;
+    color: var(--text-primary);
+}
+
+.macro-item small {
+    color: var(--racing-silver);
+    font-weight: 700;
+}
+
+.macro-dentro {
+    border-color: rgba(34, 197, 94, 0.6);
+}
+
+.macro-baixo,
+.macro-alto {
+    border-color: rgba(245, 158, 11, 0.75);
+}
+
 @media (max-width: 768px) {
     .intro-panel {
         grid-template-columns: 1fr;
+    }
+
+    .nutrition-card-header,
+    .macro-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -740,6 +868,11 @@ body[data-theme="familia"] {
 
     .theme-btn {
         flex: 1 1 calc(50% - 0.65rem);
+    }
+
+    .nutrition-card-header,
+    .macro-grid {
+        grid-template-columns: 1fr;
     }
 }
 

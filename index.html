@@ -17,7 +17,8 @@
             <h1>🏎️ CARDÁPIO TURBO KIDS</h1>
             <p class="tagline">Sugestões práticas para refeições infantis no dia a dia</p>
             <div class="theme-switcher" aria-label="Escolha o tema visual">
-                <button type="button" class="theme-btn active" data-theme="turbo">Turbo</button>
+                <button type="button" class="theme-btn active" data-theme="glass">Glass</button>
+                <button type="button" class="theme-btn" data-theme="turbo">Turbo</button>
                 <button type="button" class="theme-btn" data-theme="quadrinhos">Quadrinhos</button>
                 <button type="button" class="theme-btn" data-theme="fazendinha">Fazendinha</button>
                 <button type="button" class="theme-btn" data-theme="blocos">Blocos</button>
@@ -243,6 +244,8 @@
 
             <div id="meals-container"></div>
 
+            <div id="nutrition-summary" class="nutrition-summary"></div>
+
             <div id="shopping-list-section" class="turbo-card">
                 <h3>🛒 Lista de Compras</h3>
                 <div id="shopping-list"></div>
@@ -276,6 +279,7 @@
         <p><small>Conteúdo educativo. Consulte um nutricionista.</small></p>
     </footer>
 
+    <script src="js/nutrition-rules.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

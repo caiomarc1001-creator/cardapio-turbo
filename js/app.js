@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function setupThemeSwitcher() {
-    const savedTheme = localStorage.getItem('visualTheme') || 'turbo';
+    const savedTheme = localStorage.getItem('visualTheme') || 'glass';
     setVisualTheme(savedTheme);
 
     document.querySelectorAll('.theme-btn').forEach(button => {
@@ -254,8 +254,10 @@ function pickRecipe(candidates, profile, history, dayContext) {
 function scoreRecipe(recipe, profile, history, dayContext) {
     let score = 100;
     const prefs = profile.preferences[recipe.mealPeriod];
+    const ageRule = window.NutritionRules?.getAgeNutritionRule(profile.ageYears, profile.ageMonths);
 
     if (prefs && hasLikedIngredients(recipe, prefs.likes)) score += 25;
+    if (ageRule) score += window.NutritionRules.getRecipeAgeScore(recipe, ageRule);
 
     const rating = history.ratings[recipe.id];
     if (rating) {
@@ -310,7 +312,56 @@ function displayMenu(menu) {
         container.appendChild(card);
     });
 
+    displayNutritionSummary(menu);
     generateShoppingList(menu);
+}
+
+function displayNutritionSummary(menu) {
+    const container = document.getElementById('nutrition-summary');
+    if (!container || !window.NutritionRules || !currentProfile) return;
+
+    const rule = window.NutritionRules.getAgeNutritionRule(currentProfile.ageYears, currentProfile.ageMonths);
+    const estimate = window.NutritionRules.estimateMenuNutrition(menu);
+    const fit = window.NutritionRules.getMacroFit(estimate.macroPct, rule);
+
+    container.innerHTML = `
+        <div class="turbo-card nutrition-card">
+            <div class="nutrition-card-header">
+                <div>
+                    <p class="eyebrow">Adequação por idade</p>
+                    <h3>Faixa usada: ${rule.label}</h3>
+                    <p>${rule.guidance}</p>
+                </div>
+                <div class="nutrition-kcal">
+                    <strong>${estimate.kcal}</strong>
+                    <span>kcal estimadas no dia</span>
+                </div>
+            </div>
+
+            <div class="macro-grid">
+                ${createMacroItem('Carboidratos', estimate.macroPct.carbs, rule.carbsPct, fit.carbs)}
+                ${createMacroItem('Proteínas', estimate.macroPct.protein, rule.proteinPct, fit.protein)}
+                ${createMacroItem('Gorduras', estimate.macroPct.fat, rule.fatPct, fit.fat)}
+                <div class="macro-item">
+                    <span>Fibras estimadas</span>
+                    <strong>${estimate.fiberG} g</strong>
+                    <small>Indicador educativo</small>
+                </div>
+            </div>
+
+            <p class="medical-note">Estimativa educativa baseada nos ingredientes cadastrados. Não substitui avaliação individual e não calcula necessidades energéticas personalizadas.</p>
+        </div>
+    `;
+}
+
+function createMacroItem(label, value, range, status) {
+    return `
+        <div class="macro-item macro-${status}">
+            <span>${label}</span>
+            <strong>${value}%</strong>
+            <small>Meta: ${range[0]}-${range[1]}% • ${status}</small>
+        </div>
+    `;
 }
 
 function createMealCard(meal) {
