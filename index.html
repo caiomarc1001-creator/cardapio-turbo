@@ -8,41 +8,85 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="educational-notice">
-        ⚠️ <strong>Conteúdo educativo e geral.</strong> Para necessidades específicas, procure um profissional de saúde.
-    </div>
-
-    <header class="racing-header">
-        <div class="header-content">
-            <h1>Cardápio Turbo Kids</h1>
-            <p class="tagline">Assistente alimentar infantil com cardápios, lista de compras e critérios por faixa etária.</p>
-            <div class="theme-switcher" aria-label="Escolha o tema visual">
-                <button type="button" class="theme-btn active" data-theme="glass">Glass</button>
-                <button type="button" class="theme-btn" data-theme="turbo">Turbo</button>
-                <button type="button" class="theme-btn" data-theme="quadrinhos">Quadrinhos</button>
-                <button type="button" class="theme-btn" data-theme="fazendinha">Fazendinha</button>
-                <button type="button" class="theme-btn" data-theme="blocos">Blocos</button>
-                <button type="button" class="theme-btn" data-theme="arena">Arena</button>
-                <button type="button" class="theme-btn" data-theme="doce">Doce</button>
-                <button type="button" class="theme-btn" data-theme="familia">Azul Família</button>
+    <header class="app-topbar">
+        <div class="brand-block">
+            <button type="button" class="icon-button" aria-label="Menu">☰</button>
+            <div>
+                <h1>Cardápio Turbo Kids</h1>
+                <p>Assistente alimentar infantil</p>
             </div>
+        </div>
+
+        <nav class="top-actions" aria-label="Ações principais">
+            <a href="#form-section" class="top-pill active">Novo cardápio</a>
+            <a href="#menu-section" class="top-pill">Resultado</a>
+            <a href="#shopping-list-section" class="top-pill">Compras</a>
+            <a href="#fontes" class="top-pill">Fontes</a>
+        </nav>
+
+        <div class="status-cluster">
+            <span class="status-dot"></span>
+            <span>Dados locais</span>
         </div>
     </header>
 
-    <main class="main-container">
-        <section class="intro-panel">
-            <div>
-                <p class="eyebrow">Planejamento alimentar infantil</p>
-                <h2>Uma experiência de app para organizar refeições com mais critério e menos improviso.</h2>
-                <p>O gerador usa idade, preferências, alergias, rotina escolar, tempo de preparo e custo para sugerir refeições com foco em comida de verdade.</p>
-            </div>
-            <div class="feature-grid" aria-label="Principais recursos">
-                <div><strong>180</strong><span>receitas cadastradas</span></div>
-                <div><strong>30</strong><span>opções por refeição</span></div>
-                <div><strong>6</strong><span>momentos do dia</span></div>
-                <div><strong>1</strong><span>lista de compras</span></div>
-            </div>
-        </section>
+    <main class="app-shell">
+        <aside class="app-sidebar" aria-label="Resumo do assistente">
+            <section class="side-card side-highlight">
+                <span class="side-label">Base ativa</span>
+                <strong>180 receitas</strong>
+                <p>30 opções por refeição para variar a semana sem perder praticidade.</p>
+            </section>
+
+            <section class="side-card">
+                <div class="side-row">
+                    <span>Faixas AMDR</span>
+                    <strong>1-18 anos</strong>
+                </div>
+                <p>Carboidratos, proteínas e gorduras ajustados por idade como baliza educativa.</p>
+            </section>
+
+            <section class="side-card">
+                <div class="side-row">
+                    <span>Critério</span>
+                    <strong>Comida real</strong>
+                </div>
+                <p>Preferência por frutas, legumes, leguminosas, cereais, tubérculos e proteínas.</p>
+            </section>
+
+            <section class="side-card theme-card">
+                <span class="side-label">Tema visual</span>
+                <div class="theme-switcher" aria-label="Escolha o tema visual">
+                    <button type="button" class="theme-btn active" data-theme="glass">Glass</button>
+                    <button type="button" class="theme-btn" data-theme="turbo">Turbo</button>
+                    <button type="button" class="theme-btn" data-theme="quadrinhos">Quadrinhos</button>
+                    <button type="button" class="theme-btn" data-theme="fazendinha">Fazendinha</button>
+                    <button type="button" class="theme-btn" data-theme="blocos">Blocos</button>
+                    <button type="button" class="theme-btn" data-theme="arena">Arena</button>
+                    <button type="button" class="theme-btn" data-theme="doce">Doce</button>
+                    <button type="button" class="theme-btn" data-theme="familia">Azul Família</button>
+                </div>
+            </section>
+
+            <section class="side-card warning-side">
+                <strong>Uso educativo</strong>
+                <p>Não substitui pediatra ou nutricionista, especialmente em alergias, doenças ou necessidades específicas.</p>
+            </section>
+        </aside>
+
+        <section class="main-workspace">
+            <section class="month-hero">
+                <div>
+                    <p class="eyebrow">Planejamento alimentar infantil</p>
+                    <h2>Cardápio com critérios por idade, rotina e preferências.</h2>
+                    <p>Gere sugestões, veja a adequação estimada dos macronutrientes e transforme o resultado em lista de compras.</p>
+                </div>
+                <div class="hero-metrics" aria-label="Indicadores do assistente">
+                    <div><strong>6</strong><span>refeições</span></div>
+                    <div><strong>30</strong><span>opções por período</span></div>
+                    <div><strong>AMDR</strong><span>baliza por idade</span></div>
+                </div>
+            </section>
 
         <section id="form-section" class="turbo-card">
             <form id="profile-form">
@@ -261,7 +305,7 @@
             </ul>
         </section>
 
-        <section class="turbo-card references-card">
+        <section id="fontes" class="turbo-card references-card">
             <h3>📚 Critérios e fontes</h3>
             <p>As sugestões são educativas e organizadas com base em princípios gerais de alimentação saudável: variedade, presença de frutas, verduras, legumes, cereais, tubérculos, leguminosas e proteínas, preferência por alimentos in natura ou minimamente processados e menor uso de ultraprocessados e açúcar adicionado.</p>
             <ul class="reference-list">
@@ -271,6 +315,7 @@
                 <li><a href="https://www.sbp.com.br/especiais/pediatria-para-familias/nutricao/" target="_blank" rel="noopener">Sociedade Brasileira de Pediatria - orientações de nutrição para famílias</a></li>
             </ul>
             <p class="medical-note">Este site não é afiliado às instituições citadas e não substitui avaliação individual de pediatra, nutricionista ou outro profissional de saúde.</p>
+        </section>
         </section>
     </main>
 
