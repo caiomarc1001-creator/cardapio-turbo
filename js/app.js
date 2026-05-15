@@ -202,7 +202,7 @@ function generateDailyMenu(profile, recipes, history) {
     ];
 
     const menu = { meals: [], warnings: [] };
-    const dayContext = { usedProteins: [], usedBases: [], fruitCount: 0, vegetableCount: 0 };
+    const dayContext = { usedProteins: [], usedBases: [], fruitCount: 0, vegetableCount: 0, legumeCount: 0 };
 
     for (const period of mealPeriods) {
         const candidates = filterRecipesForMeal(recipes, profile, period.id);
@@ -245,7 +245,7 @@ function filterRecipesForMeal(recipes, profile, mealPeriod) {
             if (profile.costLevel === 'medium' && recipe.costLevel === 'high') return false;
         }
 
-        if (profile.recipeMode === 'practical' && !isPracticalRecipe(recipe)) return false;
+        if (!matchesRecipeMode(recipe, profile.recipeMode)) return false;
 
         if (mealPeriod === 'schoolSnack' && profile.goesToSchool) {
             if (!recipe.portability || !recipe.portability.includes('lunchbox_ok')) return false;
@@ -258,7 +258,21 @@ function filterRecipesForMeal(recipes, profile, mealPeriod) {
 function isPracticalRecipe(recipe) {
     const ingredientsCount = (recipe.ingredients || []).length;
     const stepsCount = (recipe.steps || []).length;
-    return recipe.prepTimeMinutes <= 20 || recipe.tags?.includes('quick') || (ingredientsCount <= 3 && stepsCount <= 3);
+    return recipe.prepTimeMinutes <= 20 || recipe.tags?.includes('quick') || (ingredientsCount <= 4 && stepsCount <= 4);
+}
+
+function matchesRecipeMode(recipe, mode) {
+    const level = recipe.complexityLevel || 'practical';
+
+    if (mode === 'complex') {
+        const ingredientsCount = (recipe.ingredients || []).length;
+        const components = getRecipeComponents(recipe);
+        if (recipe.mealPeriod === 'supper') return ['intermediate', 'complete'].includes(level) && ingredientsCount >= 4;
+        if (isMainMeal(recipe.mealPeriod)) return level === 'complete' && ingredientsCount >= 6 && scoreMainMealStructure(components) >= 35;
+        return level === 'complete' && ingredientsCount >= 5;
+    }
+
+    return level !== 'complete' && isPracticalRecipe(recipe);
 }
 
 function getComplexityScore(recipe) {
@@ -288,6 +302,10 @@ function getRecipeSearchText(recipe) {
     return [recipe.name, ...(recipe.ingredients || []).map(i => i.name), ...(recipe.tags || [])].join(' ').toLowerCase();
 }
 
+function containsAny(text, terms) {
+    return terms.some(term => text.includes(term));
+}
+
 function pickRecipe(candidates, profile, history, dayContext) {
     const scored = candidates.map(recipe => ({
         recipe,
@@ -310,9 +328,11 @@ function scoreRecipe(recipe, profile, history, dayContext) {
     let score = 100;
     const prefs = profile.preferences[recipe.mealPeriod];
     const ageRule = window.NutritionRules?.getAgeNutritionRule(profile.ageYears, profile.ageMonths);
+    const components = getRecipeComponents(recipe);
 
     if (prefs && hasLikedIngredients(recipe, prefs.likes)) score += 25;
     if (ageRule) score += window.NutritionRules.getRecipeAgeScore(recipe, ageRule);
+    if (recipe.sourceAlignment) score += (recipe.sourceAlignment - 75) * 0.45;
 
     const rating = history.ratings[recipe.id];
     if (rating) {
@@ -333,19 +353,26 @@ function scoreRecipe(recipe, profile, history, dayContext) {
     if (profile.recipeMode === 'practical') {
         score += recipe.tags?.includes('quick') ? 18 : 0;
         score += Math.max(0, 22 - complexityScore * 0.55);
+        if (recipe.complexityLevel === 'complete') score -= 80;
     }
 
     if (profile.recipeMode === 'complex') {
-        score += Math.min(24, complexityScore * 0.32);
+        score += Math.min(34, complexityScore * 0.38);
+        if (recipe.complexityLevel === 'complete') score += 36;
+        if (recipe.complexityLevel === 'practical') score -= 80;
         if (recipe.prepTimeMinutes >= 15) score += 10;
-        if ((recipe.ingredients || []).length >= 4) score += 8;
+        if ((recipe.ingredients || []).length >= 6) score += 14;
     }
 
     const protein = getFirstIngredientByCategory(recipe, 'proteinas');
     const base = getFirstIngredientByCategory(recipe, 'graos');
     if (protein && dayContext.usedProteins.includes(protein)) score -= 12;
     if (base && dayContext.usedBases.includes(base)) score -= 6;
-    if (recipe.ingredients.some(ing => ing.category === 'hortifruti')) score += 10;
+    if (components.includes('fruta')) score += dayContext.fruitCount === 0 ? 16 : 6;
+    if (components.includes('hortalica_legume')) score += dayContext.vegetableCount === 0 ? 18 : 8;
+    if (components.includes('leguminosa')) score += dayContext.legumeCount === 0 ? 18 : 8;
+    if (isMainMeal(recipe.mealPeriod)) score += scoreMainMealStructure(components);
+    if (recipe.mealPeriod === 'schoolSnack') score += scoreSnackStructure(components);
 
     return Math.max(score, 0);
 }
@@ -353,13 +380,50 @@ function scoreRecipe(recipe, profile, history, dayContext) {
 function updateDayContext(context, recipe) {
     const protein = getFirstIngredientByCategory(recipe, 'proteinas');
     const base = getFirstIngredientByCategory(recipe, 'graos');
+    const components = getRecipeComponents(recipe);
     if (protein) context.usedProteins.push(protein);
     if (base) context.usedBases.push(base);
+    if (components.includes('fruta')) context.fruitCount += 1;
+    if (components.includes('hortalica_legume')) context.vegetableCount += 1;
+    if (components.includes('leguminosa')) context.legumeCount = (context.legumeCount || 0) + 1;
 }
 
 function getFirstIngredientByCategory(recipe, category) {
     const ingredient = (recipe.ingredients || []).find(ing => ing.category === category);
     return ingredient ? ingredient.name.toLowerCase() : null;
+}
+
+function getRecipeComponents(recipe) {
+    const text = getRecipeSearchText(recipe);
+    const components = new Set(Array.isArray(recipe.components) ? recipe.components : []);
+    if (containsAny(text, ['banana', 'maca', 'pera', 'mamao', 'manga', 'morango', 'laranja', 'mexerica', 'uva', 'abacate'])) components.add('fruta');
+    if (containsAny(text, ['cenoura', 'abobora', 'abobrinha', 'brocolis', 'couve', 'espinafre', 'tomate', 'chuchu', 'vagem', 'beterraba', 'pepino', 'alface'])) components.add('hortalica_legume');
+    if (containsAny(text, ['feijao', 'lentilha', 'grao de bico', 'ervilha'])) components.add('leguminosa');
+    if (containsAny(text, ['arroz', 'macarrao', 'pao', 'tapioca', 'cuscuz', 'batata', 'mandioca', 'aveia', 'fuba'])) components.add('cereal_tuberculo');
+    if (containsAny(text, ['frango', 'carne', 'peixe', 'atum', 'sardinha', 'tilapia', 'ovo'])) components.add('proteina');
+    if (containsAny(text, ['leite', 'iogurte', 'queijo', 'ricota'])) components.add('proteina_lactea');
+    if (containsAny(text, ['azeite', 'abacate', 'amendoim', 'castanha'])) components.add('gordura_boa');
+    if (containsAny(text, ['agua'])) components.add('hidratacao');
+    return Array.from(components);
+}
+
+function isMainMeal(mealPeriod) {
+    return ['lunch', 'dinner'].includes(mealPeriod);
+}
+
+function scoreMainMealStructure(components) {
+    const required = ['proteina', 'cereal_tuberculo', 'leguminosa', 'hortalica_legume'];
+    const matches = required.filter(component => components.includes(component)).length;
+    return matches * 12 - (required.length - matches) * 18;
+}
+
+function scoreSnackStructure(components) {
+    let score = 0;
+    if (components.includes('hidratacao')) score += 14;
+    if (components.includes('fruta') || components.includes('hortalica_legume')) score += 16;
+    if (components.includes('proteina') || components.includes('proteina_lactea')) score += 12;
+    if (components.includes('cereal_tuberculo')) score += 8;
+    return score;
 }
 
 // EXIBIR MENU
@@ -391,6 +455,7 @@ function displayNutritionSummary(menu) {
     const estimate = window.NutritionRules.estimateMenuNutrition(menu, currentProfile);
     const fit = window.NutritionRules.getMacroFit(estimate.macroPct, rule);
     const weightGuidance = window.NutritionRules.getWeightGuidance(currentProfile);
+    const adequacy = assessMenuAdequacy(menu);
 
     container.innerHTML = `
         <div class="turbo-card nutrition-card">
@@ -417,6 +482,11 @@ function displayNutritionSummary(menu) {
                 </div>
             </div>
 
+            <div class="nutrition-note">
+                <strong>Critérios do dia:</strong>
+                ${adequacy.summary}
+            </div>
+
             ${weightGuidance.weight ? `
                 <div class="weight-guidance">
                     <strong>Peso informado: ${weightGuidance.weight} kg</strong>
@@ -432,6 +502,34 @@ function displayNutritionSummary(menu) {
             <p class="medical-note">Estimativa educativa baseada nos ingredientes cadastrados. Não substitui avaliação individual e não calcula necessidades energéticas personalizadas.</p>
         </div>
     `;
+}
+
+function assessMenuAdequacy(menu) {
+    const totals = {
+        fruit: 0,
+        vegetables: 0,
+        legumes: 0,
+        completeMainMeals: 0,
+        sourceAlignment: []
+    };
+
+    (menu.meals || []).forEach(meal => {
+        const components = getRecipeComponents(meal.recipe);
+        if (components.includes('fruta')) totals.fruit += 1;
+        if (components.includes('hortalica_legume')) totals.vegetables += 1;
+        if (components.includes('leguminosa')) totals.legumes += 1;
+        if (isMainMeal(meal.period) && scoreMainMealStructure(components) >= 40) totals.completeMainMeals += 1;
+        if (meal.recipe.sourceAlignment) totals.sourceAlignment.push(meal.recipe.sourceAlignment);
+    });
+
+    const alignment = totals.sourceAlignment.length
+        ? Math.round(totals.sourceAlignment.reduce((sum, value) => sum + value, 0) / totals.sourceAlignment.length)
+        : 0;
+
+    return {
+        alignment,
+        summary: `${totals.completeMainMeals}/2 grandes refeições completas; ${totals.fruit} presença(s) de fruta; ${totals.vegetables} presença(s) de hortaliças/legumes; ${totals.legumes} presença(s) de leguminosas; alinhamento médio ${alignment}%.`
+    };
 }
 
 function createMacroItem(label, value, range, status) {
@@ -458,8 +556,11 @@ function createMealCard(meal) {
         <div class="meal-meta">
             <span>⏱️ ${recipe.prepTimeMinutes} min</span>
             <span>💰 ${getCostLabel(recipe.costLevel)}</span>
+            <span>${getComplexityLabel(recipe)}</span>
+            ${recipe.sourceAlignment ? `<span>Critério ${recipe.sourceAlignment}%</span>` : ''}
             ${recipeNutrition ? `<span>${recipeNutrition.kcal} kcal</span><span>C ${recipeNutrition.carbsG}g</span><span>P ${recipeNutrition.proteinG}g</span><span>G ${recipeNutrition.fatG}g</span>` : ''}
         </div>
+        ${createComponentBar(recipe)}
         ${recipe.tags ? `<div class="meal-tags">${recipe.tags.map(tag => `<span class="tag">${formatTag(tag)}</span>`).join('')}</div>` : ''}
         ${recipe.nutritionNotes ? `<div class="nutrition-note">💡 ${recipe.nutritionNotes}</div>` : ''}
 
@@ -523,6 +624,17 @@ function createMealCard(meal) {
     `;
 
     return card;
+}
+
+function createComponentBar(recipe) {
+    const components = getRecipeComponents(recipe);
+    if (!components.length) return '';
+
+    return `
+        <div class="component-bar">
+            ${components.map(component => `<span>${getComponentLabel(component)}</span>`).join('')}
+        </div>
+    `;
 }
 
 function toggleAccordion(header) {
@@ -611,13 +723,45 @@ function getCostLabel(cost) {
     return labels[cost] || cost;
 }
 
+function getComplexityLabel(recipe) {
+    const labels = {
+        practical: 'Prática',
+        intermediate: 'Intermediária',
+        complete: 'Completa'
+    };
+    return labels[recipe.complexityLevel] || recipe.complexityLabel || 'Prática';
+}
+
+function getComponentLabel(component) {
+    const labels = {
+        cereal_tuberculo: 'Cereal/tubérculo',
+        proteina: 'Proteína',
+        proteina_lactea: 'Proteína/lácteo',
+        leguminosa: 'Leguminosa',
+        hortalica_legume: 'Hortaliça/legume',
+        fruta_hortalica: 'Fruta/vegetal',
+        fruta: 'Fruta',
+        gordura_boa: 'Gordura boa',
+        hidratacao: 'Água',
+        tempero_natural: 'Tempero natural'
+    };
+    return labels[component] || component;
+}
+
 function formatTag(tag) {
     const labels = {
         high_fiber: 'Rico em fibras',
         high_protein: 'Proteína',
         kid_friendly: 'Kids adoram',
         quick: 'Rápido',
-        lunchbox_ok: 'Lancheira OK'
+        lunchbox_ok: 'Lancheira OK',
+        ultra_low: 'Pouco ultraprocessado',
+        complete_meal: 'Prato composto',
+        leguminosa: 'Leguminosa',
+        vegetables: 'Hortaliças',
+        balanced_snack: 'Lanche completo',
+        breakfast_complete: 'Café completo',
+        light_supper: 'Ceia leve'
     };
     return labels[tag] || tag;
 }

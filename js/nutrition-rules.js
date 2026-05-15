@@ -150,9 +150,11 @@ function estimateIngredientNutrition(ingredient) {
     if (containsAny(text, ['feijao', 'lentilha', 'grao de bico', 'ervilha', 'homus'])) base = { carbsG: 18, proteinG: 8, fatG: 1, fiberG: 6 };
     if (containsAny(text, ['leite', 'iogurte', 'queijo', 'ricota', 'requeijao'])) base = { carbsG: 5, proteinG: 7, fatG: 5, fiberG: 0 };
     if (containsAny(text, ['abacate', 'pasta de amendoim', 'amendoim', 'castanha', 'azeite'])) base = { carbsG: 4, proteinG: 3, fatG: 10, fiberG: 3 };
+    if (containsAny(text, ['chia', 'semente', 'sementes'])) base = { carbsG: 4, proteinG: 3, fatG: 6, fiberG: 5 };
     if (containsAny(text, ['arroz', 'macarrao', 'pao', 'tapioca', 'cuscuz', 'fuba', 'polvilho', 'mandioca', 'batata', 'batata doce', 'aveia'])) base = { carbsG: 22, proteinG: 3, fatG: 1, fiberG: 2 };
     if (containsAny(text, ['banana', 'maca', 'pera', 'mamao', 'manga', 'morango', 'laranja', 'mexerica', 'uva'])) base = { carbsG: 14, proteinG: 0.8, fatG: 0.2, fiberG: 2.4 };
     if (containsAny(text, ['cenoura', 'abobora', 'abobrinha', 'brocolis', 'couve', 'espinafre', 'tomate', 'chuchu', 'vagem', 'beterraba', 'pepino'])) base = { carbsG: 6, proteinG: 1.2, fatG: 0.2, fiberG: 2.2 };
+    if (containsAny(text, ['agua'])) base = { carbsG: 0, proteinG: 0, fatG: 0, fiberG: 0 };
 
     return {
         carbsG: base.carbsG * amountFactor,

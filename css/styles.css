@@ -1195,6 +1195,26 @@ details .input-group {
     font-size: 0.74rem;
 }
 
+.component-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.42rem;
+    margin: 0.45rem 0 0.65rem;
+}
+
+.component-bar span {
+    min-height: 26px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(58, 215, 255, 0.28);
+    border-radius: 999px;
+    padding: 0.22rem 0.58rem;
+    background: rgba(58, 215, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.74rem;
+    font-weight: 850;
+}
+
 .nutrition-note,
 .medical-note,
 .warning-message,
