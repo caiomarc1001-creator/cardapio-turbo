@@ -1426,3 +1426,20 @@ details .input-group {
     outline: 3px solid rgba(58, 215, 255, 0.72);
     outline-offset: 2px;
 }
+
+/* FAVORITOS E HISTORICO */
+.history-boost-toggle {
+    border-color: rgba(58, 215, 255, 0.34);
+    background: rgba(58, 215, 255, 0.08);
+}
+
+.favorite-action {
+    border-color: rgba(255, 214, 10, 0.42);
+}
+
+.favorite-action.active {
+    background: linear-gradient(135deg, rgba(255, 214, 10, 0.96), rgba(255, 159, 10, 0.9));
+    color: #07172E;
+    border-color: rgba(255, 214, 10, 0.88);
+    box-shadow: 0 16px 34px rgba(255, 214, 10, 0.2);
+}
